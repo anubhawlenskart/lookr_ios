@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF23954F22AE6136003A586A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23954E22AE6136003A586A /* MBProgressHUD.m */; };
+		CF23955122AE72ED003A586A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF23955022AE72ED003A586A /* HomeViewController.swift */; };
+		CF7A752622A8E0C400E03536 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A752522A8E0C400E03536 /* AppDelegate.swift */; };
+		CF7A752822A8E0C400E03536 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A752722A8E0C400E03536 /* ViewController.swift */; };
+		CF7A752B22A8E0C400E03536 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7A752922A8E0C400E03536 /* Main.storyboard */; };
+		CF7A752D22A8E0C600E03536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7A752C22A8E0C600E03536 /* Assets.xcassets */; };
+		CF7A753022A8E0C600E03536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7A752E22A8E0C600E03536 /* LaunchScreen.storyboard */; };
+		CF7A753B22A8E0C600E03536 /* LookrStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A753A22A8E0C600E03536 /* LookrStoreTests.swift */; };
+		CF7A754622A8E0C600E03536 /* LookrStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */; };
+		CFB185DA22A8EC5A005BDD9A /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB185D922A8EC5A005BDD9A /* splash.jpg */; };
+		CFB185EA22AA521E005BDD9A /* katrina_ditto.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFB185E922AA521E005BDD9A /* katrina_ditto.gif */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CF7A753722A8E0C600E03536 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF7A751A22A8E0C400E03536 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF7A752122A8E0C400E03536;
+			remoteInfo = LookrStore;
+		};
+		CF7A754222A8E0C600E03536 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF7A751A22A8E0C400E03536 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF7A752122A8E0C400E03536;
+			remoteInfo = LookrStore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CF23954C22AE6135003A586A /* LookrStore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LookrStore-Bridging-Header.h"; sourceTree = "<group>"; };
+		CF23954D22AE6136003A586A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		CF23954E22AE6136003A586A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		CF23955022AE72ED003A586A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CF7A752222A8E0C400E03536 /* LookrStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LookrStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7A752522A8E0C400E03536 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CF7A752722A8E0C400E03536 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CF7A752A22A8E0C400E03536 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CF7A752C22A8E0C600E03536 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF7A752F22A8E0C600E03536 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF7A753122A8E0C600E03536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF7A753622A8E0C600E03536 /* LookrStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookrStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7A753A22A8E0C600E03536 /* LookrStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookrStoreTests.swift; sourceTree = "<group>"; };
+		CF7A753C22A8E0C600E03536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF7A754122A8E0C600E03536 /* LookrStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookrStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookrStoreUITests.swift; sourceTree = "<group>"; };
+		CF7A754722A8E0C600E03536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFB185D922A8EC5A005BDD9A /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = splash.jpg; path = "../../Android Code/lookr_android/app/src/main/res/drawable-xxhdpi/splash.jpg"; sourceTree = "<group>"; };
+		CFB185E922AA521E005BDD9A /* katrina_ditto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = katrina_ditto.gif; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF7A751F22A8E0C400E03536 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF7A753322A8E0C600E03536 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF7A753E22A8E0C600E03536 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF7A751922A8E0C400E03536 = {
+			isa = PBXGroup;
+			children = (
+				CFB185E922AA521E005BDD9A /* katrina_ditto.gif */,
+				CFB185D922A8EC5A005BDD9A /* splash.jpg */,
+				CF7A752422A8E0C400E03536 /* LookrStore */,
+				CF7A753922A8E0C600E03536 /* LookrStoreTests */,
+				CF7A754422A8E0C600E03536 /* LookrStoreUITests */,
+				CF7A752322A8E0C400E03536 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF7A752322A8E0C400E03536 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF7A752222A8E0C400E03536 /* LookrStore.app */,
+				CF7A753622A8E0C600E03536 /* LookrStoreTests.xctest */,
+				CF7A754122A8E0C600E03536 /* LookrStoreUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF7A752422A8E0C400E03536 /* LookrStore */ = {
+			isa = PBXGroup;
+			children = (
+				CF23954D22AE6136003A586A /* MBProgressHUD.h */,
+				CF23954E22AE6136003A586A /* MBProgressHUD.m */,
+				CF7A752522A8E0C400E03536 /* AppDelegate.swift */,
+				CF7A752722A8E0C400E03536 /* ViewController.swift */,
+				CF7A752922A8E0C400E03536 /* Main.storyboard */,
+				CF7A752C22A8E0C600E03536 /* Assets.xcassets */,
+				CF7A752E22A8E0C600E03536 /* LaunchScreen.storyboard */,
+				CF7A753122A8E0C600E03536 /* Info.plist */,
+				CF23954C22AE6135003A586A /* LookrStore-Bridging-Header.h */,
+				CF23955022AE72ED003A586A /* HomeViewController.swift */,
+			);
+			path = LookrStore;
+			sourceTree = "<group>";
+		};
+		CF7A753922A8E0C600E03536 /* LookrStoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF7A753A22A8E0C600E03536 /* LookrStoreTests.swift */,
+				CF7A753C22A8E0C600E03536 /* Info.plist */,
+			);
+			path = LookrStoreTests;
+			sourceTree = "<group>";
+		};
+		CF7A754422A8E0C600E03536 /* LookrStoreUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */,
+				CF7A754722A8E0C600E03536 /* Info.plist */,
+			);
+			path = LookrStoreUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF7A752122A8E0C400E03536 /* LookrStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF7A754A22A8E0C600E03536 /* Build configuration list for PBXNativeTarget "LookrStore" */;
+			buildPhases = (
+				CF7A751E22A8E0C400E03536 /* Sources */,
+				CF7A751F22A8E0C400E03536 /* Frameworks */,
+				CF7A752022A8E0C400E03536 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LookrStore;
+			productName = LookrStore;
+			productReference = CF7A752222A8E0C400E03536 /* LookrStore.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CF7A753522A8E0C600E03536 /* LookrStoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF7A754D22A8E0C600E03536 /* Build configuration list for PBXNativeTarget "LookrStoreTests" */;
+			buildPhases = (
+				CF7A753222A8E0C600E03536 /* Sources */,
+				CF7A753322A8E0C600E03536 /* Frameworks */,
+				CF7A753422A8E0C600E03536 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF7A753822A8E0C600E03536 /* PBXTargetDependency */,
+			);
+			name = LookrStoreTests;
+			productName = LookrStoreTests;
+			productReference = CF7A753622A8E0C600E03536 /* LookrStoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CF7A754022A8E0C600E03536 /* LookrStoreUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF7A755022A8E0C600E03536 /* Build configuration list for PBXNativeTarget "LookrStoreUITests" */;
+			buildPhases = (
+				CF7A753D22A8E0C600E03536 /* Sources */,
+				CF7A753E22A8E0C600E03536 /* Frameworks */,
+				CF7A753F22A8E0C600E03536 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CF7A754322A8E0C600E03536 /* PBXTargetDependency */,
+			);
+			name = LookrStoreUITests;
+			productName = LookrStoreUITests;
+			productReference = CF7A754122A8E0C600E03536 /* LookrStoreUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF7A751A22A8E0C400E03536 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Lenskart;
+				TargetAttributes = {
+					CF7A752122A8E0C400E03536 = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
+					};
+					CF7A753522A8E0C600E03536 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = CF7A752122A8E0C400E03536;
+					};
+					CF7A754022A8E0C600E03536 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = CF7A752122A8E0C400E03536;
+					};
+				};
+			};
+			buildConfigurationList = CF7A751D22A8E0C400E03536 /* Build configuration list for PBXProject "LookrStore" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF7A751922A8E0C400E03536;
+			productRefGroup = CF7A752322A8E0C400E03536 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF7A752122A8E0C400E03536 /* LookrStore */,
+				CF7A753522A8E0C600E03536 /* LookrStoreTests */,
+				CF7A754022A8E0C600E03536 /* LookrStoreUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF7A752022A8E0C400E03536 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFB185DA22A8EC5A005BDD9A /* splash.jpg in Resources */,
+				CF7A753022A8E0C600E03536 /* LaunchScreen.storyboard in Resources */,
+				CF7A752D22A8E0C600E03536 /* Assets.xcassets in Resources */,
+				CF7A752B22A8E0C400E03536 /* Main.storyboard in Resources */,
+				CFB185EA22AA521E005BDD9A /* katrina_ditto.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF7A753422A8E0C600E03536 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF7A753F22A8E0C600E03536 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF7A751E22A8E0C400E03536 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7A752822A8E0C400E03536 /* ViewController.swift in Sources */,
+				CF7A752622A8E0C400E03536 /* AppDelegate.swift in Sources */,
+				CF23954F22AE6136003A586A /* MBProgressHUD.m in Sources */,
+				CF23955122AE72ED003A586A /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF7A753222A8E0C600E03536 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7A753B22A8E0C600E03536 /* LookrStoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF7A753D22A8E0C600E03536 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7A754622A8E0C600E03536 /* LookrStoreUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CF7A753822A8E0C600E03536 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF7A752122A8E0C400E03536 /* LookrStore */;
+			targetProxy = CF7A753722A8E0C600E03536 /* PBXContainerItemProxy */;
+		};
+		CF7A754322A8E0C600E03536 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF7A752122A8E0C400E03536 /* LookrStore */;
+			targetProxy = CF7A754222A8E0C600E03536 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CF7A752922A8E0C400E03536 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF7A752A22A8E0C400E03536 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CF7A752E22A8E0C600E03536 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF7A752F22A8E0C600E03536 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CF7A754822A8E0C600E03536 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CF7A754922A8E0C600E03536 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CF7A754B22A8E0C600E03536 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = LookrStore/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lenskart.LookrStore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LookrStore/LookrStore-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CF7A754C22A8E0C600E03536 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = LookrStore/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lenskart.LookrStore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "LookrStore/LookrStore-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CF7A754E22A8E0C600E03536 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LookrStoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lenskart.LookrStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LookrStore.app/LookrStore";
+			};
+			name = Debug;
+		};
+		CF7A754F22A8E0C600E03536 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LookrStoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lenskart.LookrStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LookrStore.app/LookrStore";
+			};
+			name = Release;
+		};
+		CF7A755122A8E0C600E03536 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LookrStoreUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lenskart.LookrStoreUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LookrStore;
+			};
+			name = Debug;
+		};
+		CF7A755222A8E0C600E03536 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LookrStoreUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = lenskart.LookrStoreUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LookrStore;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF7A751D22A8E0C400E03536 /* Build configuration list for PBXProject "LookrStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF7A754822A8E0C600E03536 /* Debug */,
+				CF7A754922A8E0C600E03536 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF7A754A22A8E0C600E03536 /* Build configuration list for PBXNativeTarget "LookrStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF7A754B22A8E0C600E03536 /* Debug */,
+				CF7A754C22A8E0C600E03536 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF7A754D22A8E0C600E03536 /* Build configuration list for PBXNativeTarget "LookrStoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF7A754E22A8E0C600E03536 /* Debug */,
+				CF7A754F22A8E0C600E03536 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF7A755022A8E0C600E03536 /* Build configuration list for PBXNativeTarget "LookrStoreUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF7A755122A8E0C600E03536 /* Debug */,
+				CF7A755222A8E0C600E03536 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF7A751A22A8E0C400E03536 /* Project object */;
+}
