@@ -18,6 +18,7 @@
 		CF7A754622A8E0C600E03536 /* LookrStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */; };
 		CFB185DA22A8EC5A005BDD9A /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB185D922A8EC5A005BDD9A /* splash.jpg */; };
 		CFB185EA22AA521E005BDD9A /* katrina_ditto.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFB185E922AA521E005BDD9A /* katrina_ditto.gif */; };
+		CFFDBABB22B23BD300B80BF6 /* DittoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDBABA22B23BD300B80BF6 /* DittoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		CF7A754722A8E0C600E03536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFB185D922A8EC5A005BDD9A /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = splash.jpg; path = "../../Android Code/lookr_android/app/src/main/res/drawable-xxhdpi/splash.jpg"; sourceTree = "<group>"; };
 		CFB185E922AA521E005BDD9A /* katrina_ditto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = katrina_ditto.gif; sourceTree = "<group>"; };
+		CFFDBABA22B23BD300B80BF6 /* DittoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DittoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				CF7A753122A8E0C600E03536 /* Info.plist */,
 				CF23954C22AE6135003A586A /* LookrStore-Bridging-Header.h */,
 				CF23955022AE72ED003A586A /* HomeViewController.swift */,
+				CFFDBABA22B23BD300B80BF6 /* DittoViewController.swift */,
 			);
 			path = LookrStore;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			files = (
 				CF7A752822A8E0C400E03536 /* ViewController.swift in Sources */,
 				CF7A752622A8E0C400E03536 /* AppDelegate.swift in Sources */,
+				CFFDBABB22B23BD300B80BF6 /* DittoViewController.swift in Sources */,
 				CF23954F22AE6136003A586A /* MBProgressHUD.m in Sources */,
 				CF23955122AE72ED003A586A /* HomeViewController.swift in Sources */,
 			);
