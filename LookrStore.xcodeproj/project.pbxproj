@@ -16,8 +16,6 @@
 		CF7A753022A8E0C600E03536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7A752E22A8E0C600E03536 /* LaunchScreen.storyboard */; };
 		CF7A753B22A8E0C600E03536 /* LookrStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A753A22A8E0C600E03536 /* LookrStoreTests.swift */; };
 		CF7A754622A8E0C600E03536 /* LookrStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */; };
-		CFB185DA22A8EC5A005BDD9A /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB185D922A8EC5A005BDD9A /* splash.jpg */; };
-		CFB185EA22AA521E005BDD9A /* katrina_ditto.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFB185E922AA521E005BDD9A /* katrina_ditto.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +53,6 @@
 		CF7A754122A8E0C600E03536 /* LookrStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookrStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookrStoreUITests.swift; sourceTree = "<group>"; };
 		CF7A754722A8E0C600E03536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFB185D922A8EC5A005BDD9A /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = splash.jpg; path = "../../Android Code/lookr_android/app/src/main/res/drawable-xxhdpi/splash.jpg"; sourceTree = "<group>"; };
-		CFB185E922AA521E005BDD9A /* katrina_ditto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = katrina_ditto.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +83,6 @@
 		CF7A751922A8E0C400E03536 = {
 			isa = PBXGroup;
 			children = (
-				CFB185E922AA521E005BDD9A /* katrina_ditto.gif */,
-				CFB185D922A8EC5A005BDD9A /* splash.jpg */,
 				CF7A752422A8E0C400E03536 /* LookrStore */,
 				CF7A753922A8E0C600E03536 /* LookrStoreTests */,
 				CF7A754422A8E0C600E03536 /* LookrStoreUITests */,
@@ -246,11 +240,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CFB185DA22A8EC5A005BDD9A /* splash.jpg in Resources */,
 				CF7A753022A8E0C600E03536 /* LaunchScreen.storyboard in Resources */,
 				CF7A752D22A8E0C600E03536 /* Assets.xcassets in Resources */,
 				CF7A752B22A8E0C400E03536 /* Main.storyboard in Resources */,
-				CFB185EA22AA521E005BDD9A /* katrina_ditto.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
