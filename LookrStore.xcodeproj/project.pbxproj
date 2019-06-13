@@ -16,12 +16,9 @@
 		CF7A753022A8E0C600E03536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7A752E22A8E0C600E03536 /* LaunchScreen.storyboard */; };
 		CF7A753B22A8E0C600E03536 /* LookrStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A753A22A8E0C600E03536 /* LookrStoreTests.swift */; };
 		CF7A754622A8E0C600E03536 /* LookrStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */; };
-<<<<<<< HEAD
 		CFB185DA22A8EC5A005BDD9A /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB185D922A8EC5A005BDD9A /* splash.jpg */; };
 		CFB185EA22AA521E005BDD9A /* katrina_ditto.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFB185E922AA521E005BDD9A /* katrina_ditto.gif */; };
 		CFFDBABB22B23BD300B80BF6 /* DittoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDBABA22B23BD300B80BF6 /* DittoViewController.swift */; };
-=======
->>>>>>> b59677f1a9f17cbbd36d60f06ceb29e0fbaeccf7
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,12 +56,10 @@
 		CF7A754122A8E0C600E03536 /* LookrStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookrStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookrStoreUITests.swift; sourceTree = "<group>"; };
 		CF7A754722A8E0C600E03536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		CFB185D922A8EC5A005BDD9A /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = splash.jpg; path = "../../Android Code/lookr_android/app/src/main/res/drawable-xxhdpi/splash.jpg"; sourceTree = "<group>"; };
 		CFB185E922AA521E005BDD9A /* katrina_ditto.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = katrina_ditto.gif; sourceTree = "<group>"; };
 		CFFDBABA22B23BD300B80BF6 /* DittoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DittoViewController.swift; sourceTree = "<group>"; };
-=======
->>>>>>> b59677f1a9f17cbbd36d60f06ceb29e0fbaeccf7
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

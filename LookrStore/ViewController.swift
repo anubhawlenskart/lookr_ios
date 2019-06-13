@@ -12,13 +12,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     
     @IBOutlet weak var txtMobileNo: UITextField!
     
-    @IBOutlet weak var btnLogin: UIButton!
-    
-    
-<<<<<<< HEAD
-    
-=======
->>>>>>> b59677f1a9f17cbbd36d60f06ceb29e0fbaeccf7
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -74,7 +68,6 @@ class ViewController: UIViewController , UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-<<<<<<< HEAD
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
@@ -84,16 +77,12 @@ class ViewController: UIViewController , UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-=======
 }
 
 
-@IBDesignable class MyButton: UITextField
-{
+@IBDesignable class MyButton: UITextField{
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        
     }
     
     @IBInspectable var borderWidth: CGFloat = 0.0{
@@ -128,7 +117,6 @@ class ViewController: UIViewController , UITextFieldDelegate {
     }
 }
 
->>>>>>> b59677f1a9f17cbbd36d60f06ceb29e0fbaeccf7
 
 @IBDesignable
 class RoundedCornerView: UIButton {

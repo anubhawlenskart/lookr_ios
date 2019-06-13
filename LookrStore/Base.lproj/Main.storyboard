@@ -66,13 +66,11 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="GET STARTED"/>
-<<<<<<< HEAD
                                         <connections>
                                             <action selector="btnLoginDidClick:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="YIW-TG-I5K"/>
-                                            <segue destination="i9H-gZ-2Rs" kind="show" id="wim-Sy-Zls"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" translatesAutoresizingMaskIntoConstraints="NO" id="JEb-J5-3N2">
+                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" translatesAutoresizingMaskIntoConstraints="NO" id="JEb-J5-3N2">
                                         <rect key="frame" x="26" y="266.5" width="500" height="57"/>
                                         <color key="backgroundColor" red="0.28672766690000001" green="0.6778210402" blue="0.67985326049999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,7 +85,9 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="I7v-zt-xNw"/>
                                         </connections>
                                     </textField>
-=======
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yqQ-u4-C1t">
+                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="40"/>
@@ -95,8 +95,10 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="i9H-gZ-2Rs" kind="show" id="3Fi-nl-k1o"/>
+                                        </connections>
                                     </button>
->>>>>>> b59677f1a9f17cbbd36d60f06ceb29e0fbaeccf7
                                 </subviews>
                                 <color key="backgroundColor" red="0.28672766690000001" green="0.6778210402" blue="0.67985326049999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.20000000000000001" green="0.35686274509803922" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
