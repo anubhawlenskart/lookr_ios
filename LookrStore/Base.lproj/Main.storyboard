@@ -18,14 +18,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccq-Tk-B7B">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccq-Tk-B7B">
                                 <rect key="frame" x="0.0" y="20" width="768" height="400"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRY FRAMES IN 3D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="27" translatesAutoresizingMaskIntoConstraints="NO" id="86f-qa-ABa">
-                                        <rect key="frame" x="0.0" y="50" width="768" height="61"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="768" id="lkW-PB-EyX"/>
-                                        </constraints>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your phone number" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SXz-Jw-6b9" customClass="MyButton" customModule="LookrStore" customModuleProvider="target">
+                                        <rect key="frame" x="100" y="233" width="423.5" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="55"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TRY FRAMES IN 3D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="27" translatesAutoresizingMaskIntoConstraints="NO" id="86f-qa-ABa">
+                                        <rect key="frame" x="0.0" y="27" width="768" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="51"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -44,74 +63,25 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your phone number" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SXz-Jw-6b9" customClass="MyButton" customModule="LookrStore" customModuleProvider="target">
-                                        <rect key="frame" x="82" y="232" width="371" height="101"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.18743428587913513" green="0.46025794744491577" blue="0.43769699335098267" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="textColor" red="0.18743428587913513" green="0.46025794744491577" blue="0.43769699335098267" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="41"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmu-lI-QbV" customClass="RoundedCornerView" customModule="LookrStore" customModuleProvider="target">
-                                        <rect key="frame" x="388" y="232" width="264" height="101"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJY-Pw-7sV" customClass="RoundedCornerView" customModule="LookrStore">
+                                        <rect key="frame" x="434" y="233" width="209" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <state key="normal" title="GET STARTED"/>
-                                        <connections>
-                                            <action selector="btnLoginDidClick:" destination="BYZ-38-t0r" eventType="touchUpOutside" id="YIW-TG-I5K"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" translatesAutoresizingMaskIntoConstraints="NO" id="JEb-J5-3N2">
-                                        <rect key="frame" x="26" y="266.5" width="500" height="57"/>
-                                        <color key="backgroundColor" red="0.28672766690000001" green="0.6778210402" blue="0.67985326049999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="500" id="R79-e6-ZHY"/>
-                                            <constraint firstAttribute="height" constant="57" id="VN2-LP-HMx"/>
-                                        </constraints>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="BYZ-38-t0r" id="I7v-zt-xNw"/>
-                                        </connections>
-                                    </textField>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yqQ-u4-C1t">
-                                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="40"/>
+                                                <real key="value" value="50"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="NO"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="i9H-gZ-2Rs" kind="show" id="3Fi-nl-k1o"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28672766690000001" green="0.6778210402" blue="0.67985326049999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.20000000000000001" green="0.35686274509803922" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="86f-qa-ABa" firstAttribute="top" secondItem="ccq-Tk-B7B" secondAttribute="top" constant="50" id="0lM-5C-KF6"/>
-                                    <constraint firstAttribute="width" constant="768" id="D04-Ap-WuN"/>
-                                    <constraint firstAttribute="trailing" secondItem="86f-qa-ABa" secondAttribute="trailing" id="DYJ-ey-WSz"/>
-                                    <constraint firstItem="86f-qa-ABa" firstAttribute="leading" secondItem="ccq-Tk-B7B" secondAttribute="leading" constant="100" id="Wa7-p4-ppg"/>
-                                    <constraint firstAttribute="height" constant="400" id="mtf-SX-OuK"/>
-                                    <constraint firstItem="86f-qa-ABa" firstAttribute="leading" secondItem="ccq-Tk-B7B" secondAttribute="leading" id="oEE-M6-a2a"/>
-                                    <constraint firstAttribute="trailing" secondItem="86f-qa-ABa" secondAttribute="trailing" id="qqo-20-DYD"/>
-                                    <constraint firstAttribute="trailing" secondItem="86f-qa-ABa" secondAttribute="trailing" constant="268" id="zej-49-kxd"/>
-                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,13 +99,6 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ccq-Tk-B7B" secondAttribute="trailing" id="Lf6-pU-0Aa"/>
-                            <constraint firstItem="ccq-Tk-B7B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Lfh-Ga-gcr"/>
-                            <constraint firstItem="ccq-Tk-B7B" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Lml-cc-4Vz"/>
-                            <constraint firstItem="ccq-Tk-B7B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VqZ-l4-fvL"/>
-                            <constraint firstItem="ccq-Tk-B7B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aFX-i7-rJn"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
