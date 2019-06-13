@@ -78,12 +78,9 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
                                         </userDefinedRuntimeAttributes>
-<<<<<<< HEAD
                                         <connections>
                                             <action selector="getStarted:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3aY-hd-Rvi"/>
                                         </connections>
-=======
->>>>>>> f11ed3472678693f2f0bba5fe77db72758151e47
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28672766690000001" green="0.6778210402" blue="0.67985326049999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
