@@ -13,6 +13,11 @@ class ViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var txtMobileNo: UITextField!
     
    
+    @IBAction func getStarted(_ sender: Any) {
+        
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

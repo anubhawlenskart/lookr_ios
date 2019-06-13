@@ -96,7 +96,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="i9H-gZ-2Rs" kind="show" id="3Fi-nl-k1o"/>
+                                            <action selector="getStarted:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3aY-hd-Rvi"/>
                                         </connections>
                                     </button>
                                 </subviews>
