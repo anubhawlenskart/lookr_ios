@@ -12,12 +12,35 @@ class ViewController: UIViewController , UITextFieldDelegate {
     
     @IBOutlet weak var txtMobileNo: UITextField!
     
+    @IBOutlet var txtField: UITextField!
+
    
     @IBAction func getStarted(_ sender: Any) {
         
         
         
     }
+    
+  
+    @IBOutlet var image: UIImageView!
+    
+    var counter = 1
+    
+    @IBAction func next(_ sender: AnyObject) {
+    
+    image.image = UIImage(named: "frame_\(counter)_delay-0.1s.gif")
+    
+    counter += 1
+    
+    if counter == 6 {
+    
+    counter = 0
+
+    }
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -82,6 +105,8 @@ class ViewController: UIViewController , UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    
     
 }
 
