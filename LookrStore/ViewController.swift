@@ -80,14 +80,76 @@ class ViewController: UIViewController , UITextFieldDelegate {
         
         
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        //self.topImageView.image = UIImage.gif(name: "jeremy")
     
+    
+    //@IBOutlet var image: UIImageView!
+    
+    @IBOutlet weak var image: UIImageView!
+    var counter = 1
+    
+    
+    var isAnimating = false
+    
+    var timer = Timer()
+    
+    @objc func animate() {
+        
+        image.image = UIImage(named: "katimages/frame_\(counter)_delay-0.08s.gif")
+        
+        counter += 1
+        
+        if counter == 31 {
+            
+            counter = 0
+            
+            
+        }
         
     }
+    
+    @IBAction func next(_ sender: AnyObject) {
+        
+        
+        if isAnimating {
+            
+            timer.invalidate()
+            //nextbutton.setTitle("Start Animation", for: [])
+            isAnimating = true
+            
+        } else {
+            
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.animate), userInfo: nil, repeats: true)
+            animate()
+            //nextbutton.setTitle("Stop Animation", for: [])
+            
+            isAnimating = true
+            
+        }
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
+        if isAnimating {
+            
+            timer.invalidate()
+            //nextbutton.setTitle("Start Animation", for: [])
+            isAnimating = true
+            
+        } else {
+            
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.animate), userInfo: nil, repeats: true)
+            animate()
+            //nextbutton.setTitle("Stop Animation", for: [])
+            
+            isAnimating = true
+            
+        }
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -227,7 +289,32 @@ class RoundedCornerView: UIButton {
     
 }
 
-
+@IBDesignable
+extension UITextField {
+    
+    @IBInspectable var paddingLeftCustom: CGFloat {
+        get {
+            return leftView!.frame.size.width
+        }
+        set {
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
+            leftView = paddingView
+            leftViewMode = .always
+        }
+    }
+    
+    @IBInspectable var paddingRightCustom: CGFloat {
+        get {
+            return rightView!.frame.size.width
+        }
+        set {
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: newValue, height: frame.size.height))
+            rightView = paddingView
+            rightViewMode = .always
+        }
+    }
+    
+}
 
 
 
