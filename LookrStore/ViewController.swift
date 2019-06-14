@@ -10,11 +10,72 @@ import UIKit
 
 class ViewController: UIViewController , UITextFieldDelegate {
     
-    @IBOutlet weak var txtMobileNo: UITextField!
-    
-   
+    @IBOutlet weak var mobileNumber: UITextField!
+
     @IBAction func getStarted(_ sender: Any) {
+
+        if mobileNumber.text == "" {
+            
+            let alert = UIAlertController(title: "Error", message: "Enter Mobile Number", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style : .default , handler: { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else {
+            
+            if let numebr = mobileNumber.text {
+                
+                if let intnumebr = Int(numebr){
+            
+                    let urlstring = "https://labs.lenskart.com/v108/lookr/api/register?mobile=\(intnumebr)&apptype=mobile"
+                    
+                    let url = URL(string: urlstring)!
+                    let request = URLRequest(url: url)
+                    print(request)
+                    let task = URLSession.shared.dataTask(with: request){ (data, response, error) in
+                    
+                        if error != nil {
+                            
+                            print(error!)
+                            
+                        } else {
+                            
+                            if let urlContent = data {
+                                
+                                do {
+                                    
+                                    let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                                    
+                                    print(jsonResult)
+                                    
+                                    print(jsonResult["name"])
+                                    
+                                    if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String {
+                                        
+                                        print(description)
+                                        
+                                    }
+                                    
+                                    
+                                } catch {
+                                    
+                                    print("JSON Processing Failed")
+                                    
+                                }
+                                
+                            }
+                        }
+                }
+                    task.resume()
+
+                
+            }
         
+            }
+            
+            
+        }
         
         
     }
@@ -23,48 +84,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
         // Do any additional setup after loading the view.
         
         //self.topImageView.image = UIImage.gif(name: "jeremy")
-        let url = URL(string: "https://labs.lenskart.com/v108/lookr/api/")!
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in // URLSession.shared().dataTask(with: url) { (data, response, error) is now URLSession.shared.dataTask(with: url) { (data, response, error)
-            
-            if error != nil {
-                
-                print(error!)
-                
-            } else {
-                
-                if let urlContent = data {
-                    
-                    do {
-                        
-                        let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        
-                        print(jsonResult)
-                        
-                        print(jsonResult["name"])
-                        
-                        if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String {
-                            
-                            print(description)
-                            
-                        }
-                        
-                        
-                    } catch {
-                        
-                        print("JSON Processing Failed")
-                        
-                    }
-                    
-                }
-                
-                
-            }
-            
-            
-        }
-        
-        task.resume()
+    
         
     }
     
