@@ -10,53 +10,12 @@ import UIKit
 
 class ViewController: UIViewController , UITextFieldDelegate {
     
-<<<<<<< HEAD
-    @IBOutlet weak var txtMobileNo: UITextField!
-    
-    @IBOutlet var txtField: UITextField!
 
-   
-    @IBAction func getStarted(_ sender: Any) {
-        
-        
-        
-    }
-    
-  
-    @IBOutlet var image: UIImageView!
-    
-    var counter = 1
-    
-    @IBAction func next(_ sender: AnyObject) {
-    
-    image.image = UIImage(named: "frame_\(counter)_delay-0.1s.gif")
-    
-    counter += 1
-    
-    if counter == 6 {
-    
-    counter = 0
-
-    }
-        
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        //self.topImageView.image = UIImage.gif(name: "jeremy")
-        let url = URL(string: "https://labs.lenskart.com/v108/lookr/api/")!
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in // URLSession.shared().dataTask(with: url) { (data, response, error) is now URLSession.shared.dataTask(with: url) { (data, response, error)
-=======
     @IBOutlet weak var mobileNumber: UITextField!
 
     @IBAction func getStarted(_ sender: Any) {
 
         if mobileNumber.text == "" {
->>>>>>> baf58ecf7418baa6f34c10de6843cd0a090a9d6e
             
             let alert = UIAlertController(title: "Error", message: "Enter Mobile Number", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style : .default , handler: { (action) in
