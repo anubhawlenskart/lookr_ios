@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController , UITextFieldDelegate {
     
+<<<<<<< HEAD
     @IBOutlet weak var txtMobileNo: UITextField!
     
     @IBOutlet var txtField: UITextField!
@@ -49,45 +50,83 @@ class ViewController: UIViewController , UITextFieldDelegate {
         let url = URL(string: "https://labs.lenskart.com/v108/lookr/api/")!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in // URLSession.shared().dataTask(with: url) { (data, response, error) is now URLSession.shared.dataTask(with: url) { (data, response, error)
+=======
+    @IBOutlet weak var mobileNumber: UITextField!
+
+    @IBAction func getStarted(_ sender: Any) {
+
+        if mobileNumber.text == "" {
+>>>>>>> baf58ecf7418baa6f34c10de6843cd0a090a9d6e
             
-            if error != nil {
+            let alert = UIAlertController(title: "Error", message: "Enter Mobile Number", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style : .default , handler: { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }else {
+            
+            if let numebr = mobileNumber.text {
                 
-                print(error!)
-                
-            } else {
-                
-                if let urlContent = data {
+                if let intnumebr = Int(numebr){
+            
+                    let urlstring = "https://labs.lenskart.com/v108/lookr/api/register?mobile=\(intnumebr)&apptype=mobile"
                     
-                    do {
-                        
-                        let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        
-                        print(jsonResult)
-                        
-                        print(jsonResult["name"])
-                        
-                        if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String {
+                    let url = URL(string: urlstring)!
+                    let request = URLRequest(url: url)
+                    print(request)
+                    let task = URLSession.shared.dataTask(with: request){ (data, response, error) in
+                    
+                        if error != nil {
                             
-                            print(description)
+                            print(error!)
                             
+                        } else {
+                            
+                            if let urlContent = data {
+                                
+                                do {
+                                    
+                                    let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                                    
+                                    print(jsonResult)
+                                    
+                                    print(jsonResult["name"])
+                                    
+                                    if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String {
+                                        
+                                        print(description)
+                                        
+                                    }
+                                    
+                                    
+                                } catch {
+                                    
+                                    print("JSON Processing Failed")
+                                    
+                                }
+                                
+                            }
                         }
-                        
-                        
-                    } catch {
-                        
-                        print("JSON Processing Failed")
-                        
-                    }
-                    
                 }
+                    task.resume()
+
                 
-                
+            }
+        
             }
             
             
         }
         
-        task.resume()
+        
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        //self.topImageView.image = UIImage.gif(name: "jeremy")
+    
         
     }
     
