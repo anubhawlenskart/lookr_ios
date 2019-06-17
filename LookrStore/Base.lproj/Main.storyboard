@@ -29,7 +29,11 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
+<<<<<<< HEAD
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
+=======
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+>>>>>>> c34db6ad48b05a450899ede766e1b6ca1a77a888
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="3"/>
@@ -39,6 +43,12 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeftCustom">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRightCustom">
+                                                <real key="value" value="18"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
@@ -67,7 +77,7 @@
                                         <rect key="frame" x="434" y="256" width="281" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="GET STARTED"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -146,15 +156,18 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="katrina" highlightedImage="katrina" translatesAutoresizingMaskIntoConstraints="NO" id="qal-zM-weh">
-                                <rect key="frame" x="0.0" y="428" width="768" height="596"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="frame_0_delay-0.08s.gif" translatesAutoresizingMaskIntoConstraints="NO" id="gHB-Yd-rkH">
+                                <rect key="frame" x="0.0" y="420" width="768" height="604"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gHB-Yd-rkH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="400" id="1O8-w2-pgw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="image" destination="gHB-Yd-rkH" id="rG3-70-vJe"/>
                         <outlet property="mobileNumber" destination="SXz-Jw-6b9" id="StA-ah-lWB"/>
                     </connections>
                 </viewController>
@@ -403,7 +416,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="486" height="86"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+<<<<<<< HEAD
                         <viewLayoutGuide key="safeArea" id="Oue-ty-ghm"/>
+=======
+                        <viewLayoutGuide key="safeArea" id="V66-k7-7lh"/>
+>>>>>>> c34db6ad48b05a450899ede766e1b6ca1a77a888
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvg-0f-UrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -411,7 +428,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="katrina" width="1024" height="576"/>
+        <image name="frame_0_delay-0.08s.gif" width="832" height="1005"/>
         <image name="locked-padlock" width="16" height="16"/>
         <image name="smartphone-screen" width="16" height="16"/>
     </resources>
