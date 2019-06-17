@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -91,6 +91,7 @@
 				CF7A753922A8E0C600E03536 /* LookrStoreTests */,
 				CF7A754422A8E0C600E03536 /* LookrStoreUITests */,
 				CF7A752322A8E0C400E03536 /* Products */,
+				F7696AF68CDDDB08BF6E5A78 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +140,13 @@
 				CF7A754722A8E0C600E03536 /* Info.plist */,
 			);
 			path = LookrStoreUITests;
+			sourceTree = "<group>";
+		};
+		F7696AF68CDDDB08BF6E5A78 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+
 
 class ViewController: UIViewController , UITextFieldDelegate {
     
@@ -28,48 +30,39 @@ class ViewController: UIViewController , UITextFieldDelegate {
             if let numebr = mobileNumber.text {
                 
                 if let intnumebr = Int(numebr){
-            
-                    let urlstring = "https://labs.lenskart.com/v108/lookr/api/register?mobile=\(intnumebr)&apptype=mobile"
+                    let urlstring = "https://labs.lenskart.com/v108/lookr/api/register?mobile=\(intnumebr)&apptype=store"
+    
+                    let params = ["":""] as Dictionary<String, String>
                     
-                    let url = URL(string: urlstring)!
-                    let request = URLRequest(url: url)
-                    print(request)
-                    let task = URLSession.shared.dataTask(with: request){ (data, response, error) in
-                    
-                        if error != nil {
-                            
-                            print(error!)
-                            
-                        } else {
-                            
-                            if let urlContent = data {
-                                
-                                do {
-                                    
-                                    let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                                    
-                                    print(jsonResult)
-                                    
-                                    print(jsonResult["name"])
-                                    
-                                    if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String {
-                                        
-                                        print(description)
-                                        
-                                    }
-                                    
-                                    
-                                } catch {
-                                    
-                                    print("JSON Processing Failed")
-                                    
-                                }
-                                
-                            }
-                        }
-                }
-                    task.resume()
+                    var request = URLRequest(url: URL(string: urlstring)!)
+                    request.httpMethod = "POST"
+                    request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.addValue("application/json", forHTTPHeaderField: "Accept")
 
+                    let session = URLSession.shared
+                    let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                        do {
+                            let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+
+                            if let nestedDictionary = str["success"] as? [String: Any] {
+                                // access nested dictionary values by key
+                                for (key, value) in nestedDictionary {
+                                    // access all key / value pairs in dictionary
+                                    print(key)
+                                    print(value)
+                                    self.loginOtp()
+                                }
+                            }
+                           
+                            
+                        } catch {
+                            print("error")
+                        }
+                    })
+                    
+                    task.resume()
+                
                 
             }
         
@@ -80,6 +73,56 @@ class ViewController: UIViewController , UITextFieldDelegate {
         
         
     }
+    
+    func loginOtp(){
+        if let numebr = mobileNumber.text {
+            if let intnumebr = Int(numebr){
+                let urlstring = "https://labs.lenskart.com/v108/lookr/api/login?mobile=\(intnumebr)&&apptype=store&otp=1111"
+                
+                let params = ["":""] as Dictionary<String, String>
+                
+                var request = URLRequest(url: URL(string: urlstring)!)
+                request.httpMethod = "POST"
+                request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+                let session = URLSession.shared
+                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                    do {
+                        let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                        
+                        if let nestedDictionary = str["success"] as? [String: Any] {
+                            // access nested dictionary values by key
+                            for (key, value) in nestedDictionary {
+                                // access all key / value pairs in dictionary
+                                print(key)
+                                print(value)
+                                                         
+                                let storyBoard : UIStoryboard = UIStoryboard(name: "DittoView", bundle:nil)
+                                
+                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DittoView") as! DittoViewController
+                                self.present(nextViewController, animated:true, completion:nil)
+                            }
+                        }
+                        
+                        
+                    } catch {
+                        print("error")
+                    }
+                })
+                
+                task.resume()
+        
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -88,6 +131,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     
         
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

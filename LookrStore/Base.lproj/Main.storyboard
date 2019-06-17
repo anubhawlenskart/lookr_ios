@@ -30,8 +30,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardType="numberPad" keyboardAppearance="light" returnKeyType="continue" textContentType="tel"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="3"/>
@@ -167,7 +165,7 @@
         <!--Ditto View Controller-->
         <scene sceneID="wpz-Jx-8ub">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="i9H-gZ-2Rs" customClass="DittoViewController" customModule="LookrStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DittoView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i9H-gZ-2Rs" customClass="DittoViewController" customModule="LookrStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" id="V43-Hc-AYc">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -405,6 +403,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="486" height="86"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Oue-ty-ghm"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zvg-0f-UrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
