@@ -12,7 +12,7 @@ import Foundation
 
 class ViewController: UIViewController , UITextFieldDelegate {
     
-
+    var dittoid = "" ,token = ""
     @IBOutlet weak var mobileNumber: UITextField!
 
     @IBAction func getStarted(_ sender: Any) {
@@ -51,8 +51,9 @@ class ViewController: UIViewController , UITextFieldDelegate {
                                     // access all key / value pairs in dictionary
                                     print(key)
                                     print(value)
-                                    self.loginOtp()
                                 }
+                                
+                                self.loginOtp()
                             }
                            
                             
@@ -74,11 +75,10 @@ class ViewController: UIViewController , UITextFieldDelegate {
         
     }
     
-<<<<<<< HEAD
     func loginOtp(){
         if let numebr = mobileNumber.text {
             if let intnumebr = Int(numebr){
-                let urlstring = "https://labs.lenskart.com/v108/lookr/api/login?mobile=\(intnumebr)&&apptype=store&otp=1111"
+                let urlstring = "https://labs.lenskart.com/v108/lookr/api/login?mobile=\(intnumebr)&apptype=store&otp=1111"
                 
                 let params = ["":""] as Dictionary<String, String>
                 
@@ -95,16 +95,39 @@ class ViewController: UIViewController , UITextFieldDelegate {
                         
                         if let nestedDictionary = str["success"] as? [String: Any] {
                             // access nested dictionary values by key
+                            let defaults = UserDefaults.standard
                             for (key, value) in nestedDictionary {
                                 // access all key / value pairs in dictionary
-                                print(key)
-                                print(value)
-                                                         
-                                let storyBoard : UIStoryboard = UIStoryboard(name: "DittoView", bundle:nil)
-                                
-                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DittoView") as! DittoViewController
-                                self.present(nextViewController, animated:true, completion:nil)
+                                if key == "dittoid" {
+                                    self.dittoid = value as! String
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(value , forKey: "dittoid")
+                                }
+                                if key == "token" {
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(value , forKey: "token")
+                                }
                             }
+                            
+                            defaults.set(numebr , forKey: "mobileno")
+                            if(self.dittoid == ""){
+                                DispatchQueue.main.async {
+                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
+                                    self.present(balanceViewController, animated: true, completion: nil)
+                                    
+                                }
+                            }else{
+                                
+                                DispatchQueue.main.async {
+                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
+                                    self.present(balanceViewController, animated: true, completion: nil)
+                                    
+                                }
+                                
+                            }
+                            
                         }
                         
                         
@@ -116,8 +139,9 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 task.resume()
         
             }
-=======
-    
+        }
+        
+    }
     //@IBOutlet var image: UIImageView!
     
     @IBOutlet weak var image: UIImageView!
@@ -130,7 +154,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     
     @objc func animate() {
         
-        image.image = UIImage(named: "katimages/frame_\(counter)_delay-0.08s.gif")
+        image.image = UIImage(named: "katimages.imageset/frame_\(counter)_delay-0.08s.gif")
         
         counter += 1
         
@@ -138,17 +162,12 @@ class ViewController: UIViewController , UITextFieldDelegate {
             
             counter = 0
             
->>>>>>> c34db6ad48b05a450899ede766e1b6ca1a77a888
             
         }
         
     }
     
-<<<<<<< HEAD
-    
-    
-    
-=======
+
     @IBAction func next(_ sender: AnyObject) {
         
         
@@ -169,7 +188,6 @@ class ViewController: UIViewController , UITextFieldDelegate {
         }
         
     }
->>>>>>> c34db6ad48b05a450899ede766e1b6ca1a77a888
     override func viewDidLoad() {
         super.viewDidLoad()
         

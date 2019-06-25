@@ -8,24 +8,52 @@
 
 import UIKit
 
-class DittoViewController: UIViewController {
+class DittoViewController: UIViewController ,UIWebViewDelegate{
 
     @IBOutlet weak var webView: UIWebView!
     
+    var dittoid = "" ,token = "" , mnumber = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        let defaults = UserDefaults.standard
+        if let stringOne = defaults.string(forKey: "dittoid") {
+            print(stringOne) // Some String Value
+            dittoid = stringOne
+        }
+        if let stringTwo = defaults.string(forKey: "token") {
+            print(stringTwo) // Another String Value
+            token = stringTwo
+        }
         
-        //self.topImageView.image = UIImage.gif(name: "jeremy")
+        if let stringThree = defaults.string(forKey: "mobileno") {
+            print(stringThree) // Another String Value
+            mnumber = stringThree
+        }
         
-        let url = URL (string: "https://www.lookr.in/mobileapp/dittocreation?mobile=8003777766&apptype=mobile&env=prod")
+        let url = URL (string: "https://labs.lenskart.com/v108/lookr/mobileapp/dittocreation?mobile="+mnumber+"&apptype=store&env=prod")
         let requestObj = URLRequest(url: url!)
         webView.loadRequest(requestObj)
         self.view.addSubview(webView)
         
+        webView.delegate = self
 
+
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        
+        if request.url?.absoluteString == "https://labs.lenskart.com/v108/lookr/" {
+            DispatchQueue.main.async {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
+                self.present(balanceViewController, animated: true, completion: nil)
+                
+            }
+            return false
+        }
+        return true
     }
     
 }
