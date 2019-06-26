@@ -12,11 +12,14 @@ import Foundation
 
 class ViewController: UIViewController , UITextFieldDelegate {
     
+    
+    @IBOutlet weak var maleButton: RoundedCornerView!
+    @IBOutlet weak var femaleButton: UIButton!
     var dittoid = "" ,token = ""
     @IBOutlet weak var mobileNumber: UITextField!
-
+    
     @IBAction func getStarted(_ sender: Any) {
-
+        
         if mobileNumber.text == "" {
             
             let alert = UIAlertController(title: "Error", message: "Enter Mobile Number", preferredStyle: UIAlertController.Style.alert)
@@ -31,7 +34,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 
                 if let intnumebr = Int(numebr){
                     let urlstring = "https://labs.lenskart.com/v108/lookr/api/register?mobile=\(intnumebr)&apptype=store"
-    
+                    
                     let params = ["":""] as Dictionary<String, String>
                     
                     var request = URLRequest(url: URL(string: urlstring)!)
@@ -39,12 +42,12 @@ class ViewController: UIViewController , UITextFieldDelegate {
                     request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
                     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                     request.addValue("application/json", forHTTPHeaderField: "Accept")
-
+                    
                     let session = URLSession.shared
                     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
                         do {
                             let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-
+                            
                             if let nestedDictionary = str["success"] as? [String: Any] {
                                 // access nested dictionary values by key
                                 for (key, value) in nestedDictionary {
@@ -55,7 +58,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                                 
                                 self.loginOtp()
                             }
-                           
+                            
                             
                         } catch {
                             print("error")
@@ -63,16 +66,24 @@ class ViewController: UIViewController , UITextFieldDelegate {
                     })
                     
                     task.resume()
+                    
+                    
+                }
                 
-                
-            }
-        
             }
             
             
         }
         
         
+    }
+    
+    
+    @IBAction func maleButtonAction(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func femaleButtonAction(_ sender: UIButton) {
     }
     
     func loginOtp(){
@@ -137,7 +148,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 })
                 
                 task.resume()
-        
+                
             }
         }
         
@@ -167,7 +178,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
         
     }
     
-
+    
     @IBAction func next(_ sender: AnyObject) {
         
         
@@ -191,8 +202,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        mobileNumber.delegate = self
         if isAnimating {
             
             timer.invalidate()
@@ -210,7 +220,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
         }
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -230,7 +240,14 @@ class ViewController: UIViewController , UITextFieldDelegate {
     
     
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.text!.count >= 10 {
+            return false
+        }
+        return true
+    }
 }
+
 
 
 @IBDesignable class MyButton: UITextField{
