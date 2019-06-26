@@ -47,8 +47,53 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         gotouserfilterAPI()
         
         
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+        
+        view.addGestureRecognizer(leftSwipe)
+        view.addGestureRecognizer(rightSwipe)
+        
         // Do any additional setup after loading the view.
     }
+    
+    @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
+        
+        if (sender.direction == .left) {
+            print("Swipe Left")
+            if filtertype == "shape" {
+                
+                filtertype = "brand"
+                self.filtercollection.reloadData()
+
+            }else if filtertype == "brand" {
+                
+                filtertype = "size"
+                self.filtercollection.reloadData()
+                
+            }
+            
+        }
+        
+        if (sender.direction == .right) {
+            print("Swipe Right")
+            if filtertype == "brand" {
+                
+                filtertype = "shape"
+                self.filtercollection.reloadData()
+
+                
+            }else if filtertype == "size" {
+                
+                filtertype = "brand"
+                self.filtercollection.reloadData()
+            }
+           
+        }
+    }
+    
     
     @IBAction func frameshape(_ sender: Any) {
         
@@ -60,7 +105,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     
     @IBAction func brand(_ sender: Any) {
-        
         filtertype = "brand"
         self.filtercollection.reloadData()
 
@@ -68,18 +112,16 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     }
     
     @IBAction func framesize(_ sender: Any) {
-        
         filtertype = "size"
         self.filtercollection.reloadData()
 
-        
     }
     
+
     @IBAction func clearFilter(_ sender: Any) {
-        
         gotoClearfilterAPI()
-        
     }
+    
     
     func gotouserfilterAPI(){
         if let intnumebr = Int(mnumber){
@@ -217,6 +259,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             return filterbrandviewArray.count
             
         }else if filtertype == "size" {
+            
             return filtersizeviewArray.count
         }else {
             return filtershapeviewArray.count
@@ -250,6 +293,21 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         if filtertype == "shape" {
             let name = ((filtershapeviewArray[indexPath.row] as AnyObject) as! String)
             cell.name.text = name
+            if(name == "Aviator"){
+                cell.imageframe.image = UIImage(named: "aviator.png")
+            }else if(name == "Cat Eye"){
+                cell.imageframe.image = UIImage(named: "cat_eye.png")
+            }else if(name == "Oval"){
+                cell.imageframe.image = UIImage(named: "oval.png")
+            }else if(name == "Rectangle"){
+                cell.imageframe.image = UIImage(named: "rectangular.png")
+            }else if(name == "Round"){
+                cell.imageframe.image = UIImage(named: "rounded.png")
+            }else if(name == "Sports"){
+                cell.imageframe.image = UIImage(named: "sports.png")
+            }else if(name == "Clubmaster"){
+                cell.imageframe.image = UIImage(named: "clubmaster.png")
+            }
 
         }else if filtertype == "brand" {
             let name = ((filterbrandviewArray[indexPath.row] as AnyObject) as! String)
@@ -259,13 +317,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             let name = ((filtersizeviewArray[indexPath.row] as AnyObject) as! String)
             cell.name.text = name
 
-        }else {
-            
-            let name = ((filtershapeviewArray[indexPath.row] as AnyObject) as! String)
-            cell.name.text = name
-
         }
-        
         
         
         

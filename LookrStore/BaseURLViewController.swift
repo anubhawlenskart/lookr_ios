@@ -14,6 +14,8 @@ import UIKit
 class LookrConstants: NSObject {
     static let sharedInstance = LookrConstants()
     let baseURL  = "https://labs.lenskart.com/v108/lookr/api/"
+    let baseSMS  = "https://labs.lenskart.com/v108/api/"
+
 
 }
 let appDelegate = UIApplication.shared.delegate as! AppDelegate

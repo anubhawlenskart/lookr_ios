@@ -86,12 +86,12 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
 
     @objc func tappedMeback(){
-        //DispatchQueue.main.async {
-        //    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-         //   let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
-         //   self.present(balanceViewController, animated: true, completion: nil)
-        //}
-        self.view.removeFromSuperview()
+        DispatchQueue.main.async {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
+            self.present(balanceViewController, animated: true, completion: nil)
+        }
+        //self.view.removeFromSuperview()
     }
     
     @objc func tappedmeshare()

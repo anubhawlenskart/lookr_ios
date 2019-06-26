@@ -18,8 +18,10 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var brandname: UILabel!
     
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses"
-    var subFreamsArray = NSArray()
     
+    var subFreamsArray = NSArray()
+    var subeyeglassesArray = NSArray()
+
     @IBOutlet weak var liftbutton: UIButton!
     @IBOutlet weak var rightbutton: UIButton!
     
@@ -116,7 +118,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     func gotocomparisonAPI(){
         if let intnumebr = Int(mnumber){
-        let urlstring = "https://labs.lenskart.com/v108/lookr/api/getcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)"
+        let urlstring = "\(LookrConstants.sharedInstance.baseURL)getcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)"
             
             let params = ["":""] as Dictionary<String, String>
             var request = URLRequest(url: URL(string: urlstring)!)
@@ -157,7 +159,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     func gotogetwishlistAPI(){
         if let intnumebr = Int(mnumber){
-            let urlstring = "https://labs.lenskart.com/v108/lookr/api/userframes?mobile=\(intnumebr)&dittoid=\(dittoid)&type=\(filterglassstring)&count=300"
+            let urlstring = "\(LookrConstants.sharedInstance.baseURL)userframes?mobile=\(intnumebr)&dittoid=\(dittoid)&type=\(filterglassstring)&count=300"
             
             let params = ["":""] as Dictionary<String, String>
             var request = URLRequest(url: URL(string: urlstring)!)
@@ -173,7 +175,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                     let posts = json["success"] as? [[String: Any]] ?? []
                     self.subFreamsArray = posts as NSArray
-                   self.wishlistview.reloadData()
+                    self.wishlistview.reloadData()
+                    
+                    self.gotogeteyeglasseswishlistAPI()
                    
                 } catch let error as NSError {
                     print(error)
@@ -187,6 +191,40 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
     }
     
+    func gotogeteyeglasseswishlistAPI(){
+        if let intnumebr = Int(mnumber){
+            let urlstring = "\(LookrConstants.sharedInstance.baseURL)userframes?mobile=\(intnumebr)&dittoid=\(dittoid)&type=Eyeglasses&count=300"
+            
+            let params = ["":""] as Dictionary<String, String>
+            var request = URLRequest(url: URL(string: urlstring)!)
+            request.httpMethod = "POST"
+            request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                    let posts = json["success"] as? [[String: Any]] ?? []
+                    self.subeyeglassesArray = posts as NSArray
+                    self.wishlistview.reloadData()
+                    
+                } catch let error as NSError {
+                    print(error)
+                }
+                
+            })
+            
+            task.resume()
+            
+        }
+        
+    }
+    
+    
+    
     
     //MARK:
     //MARK: Collection view Delegete and Datasource
@@ -194,6 +232,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         return 1
     }
+    
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -13,11 +13,15 @@ class FilterUIViewController: UICollectionViewCell {
    
     @IBOutlet weak var name: UILabel!
     
+    @IBOutlet weak var imageframe: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
        
+        
+        
         
         
     }
