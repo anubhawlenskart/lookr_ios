@@ -17,7 +17,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var skuname: UILabel!
     @IBOutlet weak var brandname: UILabel!
     
-    var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses"
+    var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
     
     var subFreamsArray = NSArray()
     var subeyeglassesArray = NSArray()
@@ -41,6 +41,11 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             mnumber = stringThree
         }
         
+        fullimage.layer.cornerRadius = 10
+        fullimage.clipsToBounds = true
+        fullimage.layer.borderWidth = 3
+        fullimage.layer.borderColor = UIColor.white.cgColor
+        
         wishlistview.delegate = self
         gotocomparisonAPI()
         // Do any additional setup after loading the view.
@@ -53,12 +58,11 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     @IBAction func collection(_ sender: Any) {
         
-        DispatchQueue.main.async {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "collectionui") as! CollectionViewController
-            self.present(balanceViewController, animated: true, completion: nil)
+           // self.present(balanceViewController, animated: true, completion: nil)
+             self.navigationController?.pushViewController(balanceViewController, animated: true)
             
-        }
     }
     
 
@@ -75,11 +79,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     @IBAction func filter(_ sender: Any) {
         
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "filter") as! FilterViewController
-        self.addChild(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParent: self)
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shareui") as! ShareCollectionViewController
+        self.navigationController?.present(popOverVC, animated: true, completion: nil)
+
         
     }
     
@@ -108,7 +110,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         DispatchQueue.main.async {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-            self.present(balanceViewController, animated: true, completion: nil)
+           // self.present(balanceViewController, animated: true, completion: nil)
+             self.navigationController?.pushViewController(balanceViewController, animated: true)
             
         }
         
@@ -130,23 +133,23 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
 
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                do {
-                    let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                    
-                    if let nestedDictionary = str["success"] as? [String: Any] {
-                        // access nested dictionary values by key
-                        let defaults = UserDefaults.standard
-                        for (key, value) in nestedDictionary {
-                            // access all key / value pairs in dictionary
+                
+                DispatchQueue.main.async {
+                    do {
+                        let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                         
+                        if let nestedDictionary = str["success"] as? [String: Any] {
+                            // access nested dictionary values by key
+                            let defaults = UserDefaults.standard
+                            for (key, value) in nestedDictionary {
+                                // access all key / value pairs in dictionary
+                            }
+                            self.gotogetwishlistAPI()
                         }
-                        self.gotogetwishlistAPI()
-                       
+                        
+                    } catch {
+                        print("error")
                     }
-                    
-                    
-                } catch {
-                    print("error")
                 }
             })
             
@@ -171,16 +174,18 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
 
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                    let posts = json["success"] as? [[String: Any]] ?? []
-                    self.subFreamsArray = posts as NSArray
-                    self.wishlistview.reloadData()
-                    
-                    self.gotogeteyeglasseswishlistAPI()
-                   
-                } catch let error as NSError {
-                    print(error)
+                DispatchQueue.main.async {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                        let posts = json["success"] as? [[String: Any]] ?? []
+                        self.subFreamsArray = posts as NSArray
+                        self.wishlistview.reloadData()
+                        
+                        self.gotogeteyeglasseswishlistAPI()
+                       
+                    } catch let error as NSError {
+                        print(error)
+                    }
                 }
                 
             })
@@ -213,6 +218,40 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     
                 } catch let error as NSError {
                     print(error)
+                }
+                
+            })
+            
+            task.resume()
+            
+        }
+        
+    }
+    
+    
+    func getsetcomparison(){
+        if let intnumebr = Int(mnumber){
+            let urlstring = "\(LookrConstants.sharedInstance.baseURL)setcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)&sku=\(sku)"
+            
+            let params = ["":""] as Dictionary<String, String>
+            var request = URLRequest(url: URL(string: urlstring)!)
+            request.httpMethod = "POST"
+            request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                DispatchQueue.main.async {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                        let data = json["success"] as? [String: Any]
+                        let posts = data?["products"] as? [[String: AnyObject]]
+                        
+                    } catch let error as NSError {
+                        print(error)
+                    }
                 }
                 
             })

@@ -33,7 +33,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
             if let numebr = mobileNumber.text {
                 
                 if let intnumebr = Int(numebr){
-                    let urlstring = "https://labs.lenskart.com/v108/lookr/api/register?mobile=\(intnumebr)&apptype=store"
+                    let urlstring = "\(LookrConstants.sharedInstance.baseURL)register?mobile=\(intnumebr)&apptype=store"
                     
                     let params = ["":""] as Dictionary<String, String>
                     
@@ -89,7 +89,79 @@ class ViewController: UIViewController , UITextFieldDelegate {
     func loginOtp(){
         if let numebr = mobileNumber.text {
             if let intnumebr = Int(numebr){
-                let urlstring = "https://labs.lenskart.com/v108/lookr/api/login?mobile=\(intnumebr)&apptype=store&otp=1111"
+                let urlstring = "\(LookrConstants.sharedInstance.baseURL)login?mobile=\(intnumebr)&apptype=store&otp=1111"
+                
+                let params = ["":""] as Dictionary<String, String>
+                
+                var request = URLRequest(url: URL(string: urlstring)!)
+                request.httpMethod = "POST"
+                request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+                let session = URLSession.shared
+                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                    DispatchQueue.main.async {
+                        do {
+                            let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                            
+                            if let nestedDictionary = str["success"] as? [String: Any] {
+                                // access nested dictionary values by key
+                                let defaults = UserDefaults.standard
+                                for (key, value) in nestedDictionary {
+                                    // access all key / value pairs in dictionary
+                                    if key == "dittoid" {
+                                        self.dittoid = value as! String
+                                        let defaults = UserDefaults.standard
+                                        defaults.set(value , forKey: "dittoid")
+                                    }
+                                    if key == "token" {
+                                        let defaults = UserDefaults.standard
+                                        defaults.set(value , forKey: "token")
+                                    }
+                                }
+                                
+                                defaults.set(numebr , forKey: "mobileno")
+                                
+                                if(self.dittoid == ""){
+                                    self.profileOtp()
+                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
+                                    //self.present(balanceViewController, animated: true, completion: nil)
+                                    self.navigationController?.pushViewController(balanceViewController, animated: true)
+                                    
+                                }else{
+                                    
+                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
+                                    // self.present(balanceViewController, animated: true, completion: nil)
+                                    self.navigationController?.pushViewController(balanceViewController, animated: true)
+                                    
+                                    
+                                }
+                                
+                            }
+                            
+                            
+                        } catch {
+                            print("error")
+                        }
+                    }
+                })
+                
+                task.resume()
+                
+            }
+        }
+        
+    }
+    
+    
+    
+    func profileOtp(){
+        if let numebr = mobileNumber.text {
+            if let intnumebr = Int(numebr){
+                let urlstring = "\(LookrConstants.sharedInstance.baseURL)updateprofile?mobile=\(intnumebr)&name=&gender=&age==16-25"
                 
                 let params = ["":""] as Dictionary<String, String>
                 
@@ -107,37 +179,6 @@ class ViewController: UIViewController , UITextFieldDelegate {
                         if let nestedDictionary = str["success"] as? [String: Any] {
                             // access nested dictionary values by key
                             let defaults = UserDefaults.standard
-                            for (key, value) in nestedDictionary {
-                                // access all key / value pairs in dictionary
-                                if key == "dittoid" {
-                                    self.dittoid = value as! String
-                                    let defaults = UserDefaults.standard
-                                    defaults.set(value , forKey: "dittoid")
-                                }
-                                if key == "token" {
-                                    let defaults = UserDefaults.standard
-                                    defaults.set(value , forKey: "token")
-                                }
-                            }
-                            
-                            defaults.set(numebr , forKey: "mobileno")
-                            if(self.dittoid == ""){
-                                DispatchQueue.main.async {
-                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
-                                    self.present(balanceViewController, animated: true, completion: nil)
-                                    
-                                }
-                            }else{
-                                
-                                DispatchQueue.main.async {
-                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
-                                    self.present(balanceViewController, animated: true, completion: nil)
-                                    
-                                }
-                                
-                            }
                             
                         }
                         
@@ -201,7 +242,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mobileNumber.becomeFirstResponder()
         mobileNumber.delegate = self
         if isAnimating {
             
@@ -251,6 +292,17 @@ class ViewController: UIViewController , UITextFieldDelegate {
 
 
 @IBDesignable class MyButton: UITextField{
+    
+    func removeBorder(_ show: Bool) {
+        if show {
+            self.layer.borderWidth = borderWidth
+
+        }
+        else {
+            self.layer.borderWidth = 0
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
     }

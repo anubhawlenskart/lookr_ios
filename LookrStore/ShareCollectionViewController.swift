@@ -16,10 +16,13 @@ class ShareCollectionViewController: UIViewController {
     
     @IBOutlet weak var editnumber: MyButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        //self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        editnumber.becomeFirstResponder()
         
         let tapclose = UITapGestureRecognizer(target: self, action: #selector(CollectionViewController.tappedMeback))
         
@@ -38,12 +41,14 @@ class ShareCollectionViewController: UIViewController {
             mnumber = stringThree
         }
         
+        self.editnumber.text = mnumber
+        self.editnumber.removeBorder(false)
+        
     
     }
     
     @objc func tappedMeback(){
-        self.view.removeFromSuperview()
-
+        self.dismiss(animated: true, completion: nil)
     }
     
     func showAnimate()
@@ -72,6 +77,13 @@ class ShareCollectionViewController: UIViewController {
     }
 
 
+    @IBAction func editButton(_ sender: Any) {
+        
+        editnumber.isUserInteractionEnabled=true
+        self.editnumber.removeBorder(true)
+
+        
+    }
     @IBAction func sendbutton(_ sender: Any) {
         
         if editnumber.text == "" {
@@ -91,12 +103,14 @@ class ShareCollectionViewController: UIViewController {
     }
     
     
+    
+    
     func gotosharewishilistAPI(){
-        var encodedurl =  "\(LookrConstants.sharedInstance.baseSMS)mobileapp/comparison?mobile=\(mnumber)&dittoid=\(self.dittoid)&filtertype=all&apptype=store" ;
+        var encodedurl =  "\(LookrConstants.sharedInstance.baseURL)mobileapp/comparison?mobile=\(mnumber)filtertype=all&apptype=store" ;
 
         
         if let intnumebr = Int(editnumber.text!){
-            let urlstring = "\(LookrConstants.sharedInstance.baseSMS)sendcomraisonsms?mobile=\(intnumebr)&comparisonurl=\(encodedurl)"
+            let urlstring = "\(LookrConstants.sharedInstance.baseURL)sendcomraisonsms?mobile=\(intnumebr)&comparisonurl=\(encodedurl)"
             
             let params = ["":""] as Dictionary<String, String>
             var request = URLRequest(url: URL(string: urlstring)!)
@@ -111,7 +125,8 @@ class ShareCollectionViewController: UIViewController {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                     let posts = json["success"] as? [[String: Any]] ?? []
-                    
+                    self.dismiss(animated: true, completion: nil)
+
                 } catch let error as NSError {
                     print(error)
                 }
@@ -122,6 +137,13 @@ class ShareCollectionViewController: UIViewController {
             
         }
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.text!.count >= 10 {
+            return false
+        }
+        return true
     }
     
 }

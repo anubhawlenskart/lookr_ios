@@ -11,7 +11,7 @@ import UIKit
 class CollectionViewController: BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-    var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses"
+    var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
     var products = ""
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var share: UIImageView!
@@ -52,7 +52,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     func getcomparisonproduct(){
         if let intnumebr = Int(mnumber){
-            let urlstring = "https://labs.lenskart.com/v108/lookr/api/getcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)"
+            let urlstring = "\(LookrConstants.sharedInstance.baseURL)getcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)"
             
             let params = ["":""] as Dictionary<String, String>
             var request = URLRequest(url: URL(string: urlstring)!)
@@ -64,16 +64,52 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                    let data = json["success"] as? [String: Any]
-                    let posts = data?["products"] as? [[String: AnyObject]]
-                    self.collectionviewArray = posts!
-                    self.collectionview.reloadData()
-                   
-                    
-                } catch let error as NSError {
-                    print(error)
+                DispatchQueue.main.async {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                        let data = json["success"] as? [String: Any]
+                        let posts = data?["products"] as? [[String: AnyObject]]
+                        self.collectionviewArray = posts!
+                        self.collectionview.reloadData()
+                        
+                    } catch let error as NSError {
+                        print(error)
+                    }
+                }
+                
+            })
+            
+            task.resume()
+            
+        }
+        
+    }
+    
+    func getdeletecomparison(){
+        if let intnumebr = Int(mnumber){
+            let urlstring = "\(LookrConstants.sharedInstance.baseURL)setcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)&sku=\(sku)"
+            
+            let params = ["":""] as Dictionary<String, String>
+            var request = URLRequest(url: URL(string: urlstring)!)
+            request.httpMethod = "POST"
+            request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+            
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                DispatchQueue.main.async {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                        let data = json["success"] as? [String: Any]
+                        let posts = data?["products"] as? [[String: AnyObject]]
+                        self.collectionviewArray = posts!
+                        self.collectionview.reloadData()
+                        
+                    } catch let error as NSError {
+                        print(error)
+                    }
                 }
                 
             })
@@ -86,21 +122,20 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
 
     @objc func tappedMeback(){
-        DispatchQueue.main.async {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
-            self.present(balanceViewController, animated: true, completion: nil)
-        }
+           self.navigationController?.popViewController(animated: true)
+
         //self.view.removeFromSuperview()
     }
     
     @objc func tappedmeshare()
     {
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shareui") as! ShareCollectionViewController
-        self.addChild(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParent: self)
+       // popOverVC.view.frame = self.view.frame
+       // self.view.addSubview(popOverVC.view)
+       // popOverVC.didMove(toParent: self)
+        self.navigationController?.present(popOverVC, animated: true, completion: nil)
+
+        
     }
 
     
@@ -143,6 +178,11 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
 
         let sku = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "sku") as! String)
         let fimage = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "image") as! String)
+        
+        let brand = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "brand") as! String)
+        
+        cell.sku.text=sku
+        cell.brandname.text = brand
 
         let skuurl = URL(string: "https://d1.lk.api.ditto.com/comparison/?ditto_id="+dittoid+"&product_id="+sku)
         

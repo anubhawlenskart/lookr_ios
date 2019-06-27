@@ -48,8 +48,8 @@ class DittoViewController: UIViewController ,UIWebViewDelegate{
             DispatchQueue.main.async {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
-                self.present(balanceViewController, animated: true, completion: nil)
-                
+               // self.present(balanceViewController, animated: true, completion: nil)
+                 self.navigationController?.pushViewController(balanceViewController, animated: true)
             }
             return false
         }

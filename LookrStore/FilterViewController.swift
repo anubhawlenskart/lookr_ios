@@ -26,7 +26,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
 
       
         filtercollection.dataSource = self
@@ -137,13 +136,15 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                    let posts = json["success"] as? [[String: Any]] ?? []
-                    self.gotogetfiltersAPI()
-                    
-                } catch let error as NSError {
-                    print(error)
+                DispatchQueue.main.async {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                        let posts = json["success"] as? [[String: Any]] ?? []
+                        self.gotogetfiltersAPI()
+                        
+                    } catch let error as NSError {
+                        print(error)
+                    }
                 }
                 
             })
@@ -215,7 +216,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                     let data = json["success"] as? [String: Any]
-                    self.view.removeFromSuperview()
+                    self.dismiss(animated: true, completion: nil)
 
                     
                 } catch let error as NSError {
@@ -234,9 +235,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     
     @IBAction func close(_ sender: Any) {
-        
-        
-        self.view.removeFromSuperview()
+        self.dismiss(animated: true, completion: nil)
     }
     
     

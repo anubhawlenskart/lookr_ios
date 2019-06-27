@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF1B24B522C35E03008FD431 /* 7-compare in Resources */ = {isa = PBXBuildFile; fileRef = CF1B24B422C35E03008FD431 /* 7-compare */; };
 		CF21CBB122C2060F00F3CF8B /* grouparrow.png in Resources */ = {isa = PBXBuildFile; fileRef = CF21CBB022C2060F00F3CF8B /* grouparrow.png */; };
 		CF21CBB322C20B1500F3CF8B /* ChangeDiitoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF21CBB222C20B1500F3CF8B /* ChangeDiitoViewController.swift */; };
 		CF21CBB522C21E5700F3CF8B /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF21CBB422C21E5700F3CF8B /* FilterViewController.swift */; };
@@ -43,6 +44,10 @@
 		CF7A753022A8E0C600E03536 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7A752E22A8E0C600E03536 /* LaunchScreen.storyboard */; };
 		CF7A753B22A8E0C600E03536 /* LookrStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A753A22A8E0C600E03536 /* LookrStoreTests.swift */; };
 		CF7A754622A8E0C600E03536 /* LookrStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */; };
+		CF7EF87922C4A064001AE1B0 /* iTunesArtwork@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7EF87522C4A063001AE1B0 /* iTunesArtwork@3x.png */; };
+		CF7EF87A22C4A064001AE1B0 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = CF7EF87622C4A064001AE1B0 /* AppIcon.appiconset */; };
+		CF7EF87B22C4A064001AE1B0 /* iTunesArtwork@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7EF87722C4A064001AE1B0 /* iTunesArtwork@1x.png */; };
+		CF7EF87C22C4A064001AE1B0 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7EF87822C4A064001AE1B0 /* iTunesArtwork@2x.png */; };
 		CFFDBABB22B23BD300B80BF6 /* DittoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFDBABA22B23BD300B80BF6 /* DittoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF1B24B422C35E03008FD431 /* 7-compare */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "7-compare"; path = "Assets.xcassets/7-compare"; sourceTree = "<group>"; };
 		CF21CBB022C2060F00F3CF8B /* grouparrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grouparrow.png; path = Assets.xcassets/grouparrow.png; sourceTree = "<group>"; };
 		CF21CBB222C20B1500F3CF8B /* ChangeDiitoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDiitoViewController.swift; sourceTree = "<group>"; };
 		CF21CBB422C21E5700F3CF8B /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +114,10 @@
 		CF7A754122A8E0C600E03536 /* LookrStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookrStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7A754522A8E0C600E03536 /* LookrStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookrStoreUITests.swift; sourceTree = "<group>"; };
 		CF7A754722A8E0C600E03536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF7EF87522C4A063001AE1B0 /* iTunesArtwork@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@3x.png"; path = "Assets.xcassets/iTunesArtwork@3x.png"; sourceTree = "<group>"; };
+		CF7EF87622C4A064001AE1B0 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = Assets.xcassets/AppIcon.appiconset; sourceTree = "<group>"; };
+		CF7EF87722C4A064001AE1B0 /* iTunesArtwork@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@1x.png"; path = "Assets.xcassets/iTunesArtwork@1x.png"; sourceTree = "<group>"; };
+		CF7EF87822C4A064001AE1B0 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iTunesArtwork@2x.png"; path = "Assets.xcassets/iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		CFFDBABA22B23BD300B80BF6 /* DittoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DittoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +197,11 @@
 				CF7A752722A8E0C400E03536 /* ViewController.swift */,
 				CF7A752922A8E0C400E03536 /* Main.storyboard */,
 				CF7A752C22A8E0C600E03536 /* Assets.xcassets */,
+				CF7EF87622C4A064001AE1B0 /* AppIcon.appiconset */,
+				CF7EF87722C4A064001AE1B0 /* iTunesArtwork@1x.png */,
+				CF7EF87822C4A064001AE1B0 /* iTunesArtwork@2x.png */,
+				CF7EF87522C4A063001AE1B0 /* iTunesArtwork@3x.png */,
+				CF1B24B422C35E03008FD431 /* 7-compare */,
 				CF21CBB822C2213200F3CF8B /* icon_filter.png */,
 				CF21CBB022C2060F00F3CF8B /* grouparrow.png */,
 				CF638EBA22BB5E55005D53F0 /* katimages.imageset */,
@@ -341,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF21CBD322C2424900F3CF8B /* hexagonal.png in Resources */,
+				CF7EF87922C4A064001AE1B0 /* iTunesArtwork@3x.png in Resources */,
 				CF21CBCB22C2424900F3CF8B /* wayfarer.png in Resources */,
 				CF21CBCC22C2424900F3CF8B /* butterfly.png in Resources */,
 				CF7A753022A8E0C600E03536 /* LaunchScreen.storyboard in Resources */,
@@ -352,12 +368,16 @@
 				CF21CBD222C2424900F3CF8B /* rounded.png in Resources */,
 				CF21CBD522C2424900F3CF8B /* clubmaster.png in Resources */,
 				CF7A752D22A8E0C600E03536 /* Assets.xcassets in Resources */,
+				CF1B24B522C35E03008FD431 /* 7-compare in Resources */,
+				CF7EF87A22C4A064001AE1B0 /* AppIcon.appiconset in Resources */,
 				CF21CBCD22C2424900F3CF8B /* octagonal.png in Resources */,
 				CF7A752B22A8E0C400E03536 /* Main.storyboard in Resources */,
 				CF21CBB922C2213200F3CF8B /* icon_filter.png in Resources */,
 				CF21CBD722C2424900F3CF8B /* square.png in Resources */,
+				CF7EF87C22C4A064001AE1B0 /* iTunesArtwork@2x.png in Resources */,
 				CF21CBD122C2424900F3CF8B /* oval.png in Resources */,
 				CF21CBB122C2060F00F3CF8B /* grouparrow.png in Resources */,
+				CF7EF87B22C4A064001AE1B0 /* iTunesArtwork@1x.png in Resources */,
 				CF21CBD422C2424900F3CF8B /* plento.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,7 +598,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W3579UQW25;
+				DEVELOPMENT_TEAM = TWLN997R6H;
 				INFOPLIST_FILE = LookrStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -602,7 +622,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W3579UQW25;
+				DEVELOPMENT_TEAM = TWLN997R6H;
 				INFOPLIST_FILE = LookrStore/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
