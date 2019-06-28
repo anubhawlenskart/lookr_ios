@@ -9,19 +9,17 @@
 import UIKit
 
 class ShareCollectionViewController: UIViewController {
+    
     @IBOutlet weak var close: UIImageView!
+    @IBOutlet weak var editnumber: MyButton!
     
     var dittoid = "" ,token = "" , mnumber = ""
-
-    
-    @IBOutlet weak var editnumber: MyButton!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         editnumber.becomeFirstResponder()
         
         let tapclose = UITapGestureRecognizer(target: self, action: #selector(CollectionViewController.tappedMeback))
@@ -41,14 +39,13 @@ class ShareCollectionViewController: UIViewController {
             mnumber = stringThree
         }
         
-        self.editnumber.text = mnumber
-        self.editnumber.removeBorder(false)
+        editnumber.text = mnumber
+        editnumber.removeBorder(false)
         
-    
     }
     
     @objc func tappedMeback(){
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func showAnimate()
@@ -75,39 +72,33 @@ class ShareCollectionViewController: UIViewController {
             }
         });
     }
-
-
+    
+    
     @IBAction func editButton(_ sender: Any) {
         
         editnumber.isUserInteractionEnabled=true
-        self.editnumber.removeBorder(true)
-
+        editnumber.removeBorder(true)
+        
         
     }
     @IBAction func sendbutton(_ sender: Any) {
-        
         if editnumber.text == "" {
             
             let alert = UIAlertController(title: "Error", message: "Enter Mobile Number", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style : .default , handler: { (action) in
                 self.dismiss(animated: true, completion: nil)
             }))
-           // self.present(alert, animated: true, completion: nil)
+            // self.present(alert, animated: true, completion: nil)
             
         }else {
             
             gotosharewishilistAPI()
         }
-        
-        
     }
-    
-    
-    
     
     func gotosharewishilistAPI(){
         var encodedurl =  "\(LookrConstants.sharedInstance.baseURL)mobileapp/comparison?mobile=\(mnumber)filtertype=all&apptype=store" ;
-
+        
         
         if let intnumebr = Int(editnumber.text!){
             let urlstring = "\(LookrConstants.sharedInstance.baseURL)sendcomraisonsms?mobile=\(intnumebr)&comparisonurl=\(encodedurl)"
@@ -126,7 +117,7 @@ class ShareCollectionViewController: UIViewController {
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                     let posts = json["success"] as? [[String: Any]] ?? []
                     self.dismiss(animated: true, completion: nil)
-
+                    
                 } catch let error as NSError {
                     print(error)
                 }

@@ -9,14 +9,14 @@
 import UIKit
 
 class ChnageDittoViewController: UIViewController {
-
+    
     @IBOutlet weak var textfiled: UILabel!
     
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let defaults = UserDefaults.standard
         if let stringOne = defaults.string(forKey: "dittoid") {
             dittoid = stringOne
@@ -33,30 +33,21 @@ class ChnageDittoViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func yes(_ sender: Any) {
-        
-        DispatchQueue.main.async {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
-            self.present(balanceViewController, animated: true, completion: nil)
-            
-        }
-        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
+        self.present(balanceViewController, animated: true, completion: nil)
     }
     
-    
     @IBAction func no(_ sender: Any) {
-        
         self.view.removeFromSuperview()
     }
     
     
     @objc func tappedMeback(){
         self.view.removeFromSuperview()
-        
     }
     
     func showAnimate()
@@ -83,7 +74,4 @@ class ChnageDittoViewController: UIViewController {
             }
         });
     }
-    
-
-
 }

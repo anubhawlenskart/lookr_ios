@@ -21,7 +21,6 @@ class GlobelFunctions: NSObject {
         alertView.addAction(UIAlertAction(title: "OK", style: .cancel, handler:{(alert: UIAlertAction!) in
             
         }))
-       // UIApplication.inputViewController()?.present(alertView, animated: true, completion: nil)
     }
     
     

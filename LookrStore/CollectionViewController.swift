@@ -188,8 +188,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         let furl = URL(string: fimage)
         
-        let fdata = try? Data(contentsOf: furl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        
+        let fdata = try? Data(contentsOf: furl!)
         let ftask = URLSession.shared.dataTask(with: furl!) { fdata, response, error in
             guard let fdata = fdata, error == nil else { return }
             
@@ -211,7 +210,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     newsetsku = newsetsku + "\(existingSKU),"
                 }
             }
-            
         }
         newsetsku.removeLast()
         getdeletecomparison()

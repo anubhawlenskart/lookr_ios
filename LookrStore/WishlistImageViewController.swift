@@ -15,8 +15,6 @@ class WishlistImageViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
         image.layer.borderWidth = 1
         image.layer.masksToBounds = false
         image.layer.borderColor = UIColor.white.cgColor
@@ -31,7 +29,6 @@ class WishlistImageViewCell: UICollectionViewCell {
             if isSelected {
                 self.image.image = nil
             }
-            
         }
     }
     
