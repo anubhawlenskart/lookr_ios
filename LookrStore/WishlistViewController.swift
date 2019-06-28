@@ -8,15 +8,11 @@
 
 import UIKit
 
-<<<<<<< HEAD
-class UserFreameViewController : BaseViewController ,
-=======
 protocol WishListControllerDelegate: class {
     func didLogOut()
 }
 
-class WishlistViewController : BaseViewController ,
->>>>>>> 3a7ee404df0cac1327a942b553e61e9fb3310f6f
+class UserFreameViewController : BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var eyeglasses: UIButton!
@@ -27,6 +23,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var brandname: UILabel!
     @IBOutlet weak var liftbutton: UIButton!
     @IBOutlet weak var rightbutton: UIButton!
+    @IBOutlet weak var imageCirleView: UIView!
+
     
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
     var indexPathmain = 0
@@ -35,12 +33,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     var subsunglassesArray = NSArray()
     var collectionviewArray = [[String : AnyObject]]()
     
-<<<<<<< HEAD
-    @IBOutlet weak var imageCirleView: UIView!
-=======
     var wishlistedProduct = ""
     weak var delegate: WishListControllerDelegate?
->>>>>>> 3a7ee404df0cac1327a942b553e61e9fb3310f6f
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,14 +48,14 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         if let stringThree = defaults.string(forKey: "mobileno") {
             mnumber = stringThree
         }
+        
         fullimage.layer.cornerRadius = 10
         fullimage.clipsToBounds = true
         fullimage.layer.borderWidth = 3
         fullimage.layer.borderColor = UIColor.white.cgColor
         
         wishlistview.delegate = self
-        
-        
+    
         imageCirleView.layer.borderWidth = 2.0
         imageCirleView.layer.masksToBounds = false
         imageCirleView.layer.borderColor = LookrConstants.sharedInstance.color.cgColor
@@ -310,11 +304,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> UIEdgeInsets{
-<<<<<<< HEAD
 
-        
-=======
->>>>>>> 3a7ee404df0cac1327a942b553e61e9fb3310f6f
         let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
         let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
         let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2

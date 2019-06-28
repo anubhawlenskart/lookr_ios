@@ -36,27 +36,13 @@ class ChnageDittoViewController: UIViewController {
     }
     
     @IBAction func yes(_ sender: Any) {
-<<<<<<< HEAD
-        
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
-           // self.present(balanceViewController, animated: true, completion: nil)
-          self.navigationController?.pushViewController(balanceViewController, animated: true)
-        
-=======
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
-        self.present(balanceViewController, animated: true, completion: nil)
->>>>>>> 1317ac9851970c86443874a02bca28a617451104
+        self.navigationController?.pushViewController(balanceViewController, animated: true)
     }
     
     @IBAction func no(_ sender: Any) {
-<<<<<<< HEAD
-        
         self.navigationController?.dismiss(animated: true, completion: nil)
-=======
-        self.view.removeFromSuperview()
->>>>>>> 1317ac9851970c86443874a02bca28a617451104
     }
     
     

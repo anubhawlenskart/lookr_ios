@@ -10,13 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LookrStore/CollectionViewController.swift"
-            timestampString = "583406782.097114"
+            timestampString = "583408012.562706"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
-            landmarkName = "didDeleteSKU(_:)"
-            landmarkType = "7">
+            startingLineNumber = "219"
+            endingLineNumber = "219">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LookrStore/CollectionViewController.swift"
-            timestampString = "583406782.097972"
+            timestampString = "583408012.56291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "didDeleteSKU(_:)"
-            landmarkType = "7">
+            startingLineNumber = "219"
+            endingLineNumber = "219">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,13 +54,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LookrStore/ViewController.swift"
-            timestampString = "583406812.673936"
+            timestampString = "583408012.563068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "getStarted(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LookrStore.ViewController.getStarted(Any) -&gt; ()"
+                  moduleName = "LookrStore"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/keshavgangwal/Desktop/IOS%20Code/lookr_ios/LookrStore/ViewController.swift"
+                  timestampString = "583408012.626022"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "978">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in LookrStore.ViewController.getStarted(Any) -&gt; ()"
+                  moduleName = "LookrStore"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/keshavgangwal/Desktop/IOS%20Code/lookr_ios/LookrStore/ViewController.swift"
+                  timestampString = "583408012.632048"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,11 +102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LookrStore/ViewController.swift"
-            timestampString = "583406820.400279"
+            timestampString = "583408012.5639991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "profileOtp()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,45 +118,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LookrStore/ViewController.swift"
-            timestampString = "583406821.718212"
+            timestampString = "583408012.564703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "ViewController"
             landmarkType = "3">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "LookrStore.ViewController.loginOtp() -&gt; ()"
-                  moduleName = "LookrStore"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/keshavgangwal/Desktop/IOS%20Code/lookr_ios/LookrStore/ViewController.swift"
-                  timestampString = "583406821.958414"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "2753">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in LookrStore.ViewController.loginOtp() -&gt; ()"
-                  moduleName = "LookrStore"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/keshavgangwal/Desktop/IOS%20Code/lookr_ios/LookrStore/ViewController.swift"
-                  timestampString = "583406821.962706"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "110"
-                  endingLineNumber = "110"
-                  offsetFromSymbolStart = "299">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

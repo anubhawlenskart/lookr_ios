@@ -125,14 +125,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     @objc func tappedmeshare()
     {
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shareui") as! ShareCollectionViewController
-<<<<<<< HEAD
-        self.navigationController?.present(popOverVC, animated: true, completion: nil)
-
-        
-=======
+        let popOverVC = UIStoryboard(name: "Main", bundle:nil).instantiateViewController(withIdentifier: "shareui") as! ShareCollectionViewController
         navigationController?.present(popOverVC, animated: true, completion: nil)
->>>>>>> 3a7ee404df0cac1327a942b553e61e9fb3310f6f
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

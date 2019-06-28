@@ -86,12 +86,7 @@ class ViewController: UIViewController , UITextFieldDelegate, WishListController
                                 }else{
                                     
                                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-<<<<<<< HEAD
-                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! UserFreameViewController
-=======
-                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
-                                    balanceViewController.delegate = self
->>>>>>> 3a7ee404df0cac1327a942b553e61e9fb3310f6f
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! UserFreameViewController                                    
                                     // self.present(balanceViewController, animated: true, completion: nil)
                                     self.navigationController?.pushViewController(balanceViewController, animated: true)
                                 }
