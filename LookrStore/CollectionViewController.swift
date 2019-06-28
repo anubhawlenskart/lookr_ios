@@ -9,10 +9,10 @@
 import UIKit
 
 class CollectionViewController: BaseViewController ,
-UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, CollectionimageViewCellDelegate {
     
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
-    var products = ""
+    var products = "" , newsetsku = ""
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var share: UIImageView!
     @IBOutlet weak var back: UIImageView!
@@ -67,6 +67,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 DispatchQueue.main.async {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                        
                         let data = json["success"] as? [String: Any]
                         let posts = data?["products"] as? [[String: AnyObject]]
                         self.collectionviewArray = posts!
@@ -87,7 +88,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     func getdeletecomparison(){
         if let intnumebr = Int(mnumber){
-            let urlstring = "\(LookrConstants.sharedInstance.baseURL)setcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)&sku=\(sku)"
+            let urlstring = "\(LookrConstants.sharedInstance.baseURL)setcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)&sku=\(newsetsku)"
             
             let params = ["":""] as Dictionary<String, String>
             var request = URLRequest(url: URL(string: urlstring)!)
@@ -103,9 +104,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     do {
                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                         let data = json["success"] as? [String: Any]
-                        let posts = data?["products"] as? [[String: AnyObject]]
-                        self.collectionviewArray = posts!
-                        self.collectionview.reloadData()
+                        self.getcomparisonproduct()
                         
                     } catch let error as NSError {
                         print(error)
@@ -173,7 +172,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         // get a reference to our storyboard cell
         
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath as IndexPath) as! CollectionimageViewController
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath as IndexPath) as! CollectionimageViewCell
         
 
         let sku = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "sku") as! String)
@@ -182,6 +181,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         let brand = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "brand") as! String)
         
         cell.sku.text=sku
+        cell.delegate = self
+        cell.skuNumber = Int(sku) ?? 0
         cell.brandname.text = brand
 
         let skuurl = URL(string: "https://d1.lk.api.ditto.com/comparison/?ditto_id="+dittoid+"&product_id="+sku)
@@ -218,6 +219,23 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+    }
+    
+    
+    func didDeleteSKU(_ sku: Int) {
+        collectionviewArray.forEach { (product) in
+            let skuString = String(sku)
+            if let existingSKU = product["sku"] as? String {
+                if existingSKU != skuString {
+                    newsetsku = newsetsku + "\(existingSKU),"
+                }
+            }
+            
+        }
+        newsetsku.removeLast()
+        self.getdeletecomparison()
         
         
     }

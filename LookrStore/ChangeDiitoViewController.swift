@@ -10,10 +10,28 @@ import UIKit
 
 class ChnageDittoViewController: UIViewController {
 
+    @IBOutlet weak var textfiled: UILabel!
+    
+    var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-          self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        let defaults = UserDefaults.standard
+        if let stringOne = defaults.string(forKey: "dittoid") {
+            dittoid = stringOne
+        }
+        if let stringTwo = defaults.string(forKey: "token") {
+            token = stringTwo
+        }
+        
+        if let stringThree = defaults.string(forKey: "mobileno") {
+            mnumber = stringThree
+        }
+        
+        textfiled.text = "Is \(mnumber)  Your Number ? "
+        
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         // Do any additional setup after loading the view.
     }

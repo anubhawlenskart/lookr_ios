@@ -1,5 +1,5 @@
 //
-//  WishlistImageViewController.swift
+//  WishlistImageViewCell.swift
 //  LookrStore
 //
 //  Created by Keshav Gangwal on 20/06/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WishlistImageViewController: UICollectionViewCell {
+class WishlistImageViewCell: UICollectionViewCell {
         
     @IBOutlet weak var image: UIImageView!
     
@@ -24,6 +24,15 @@ class WishlistImageViewController: UICollectionViewCell {
         image.layer.cornerRadius = (self.frame.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
         image.clipsToBounds = true
 
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                self.image.image = nil
+            }
+            
+        }
     }
     
 

@@ -1,5 +1,5 @@
 //
-//  CollectionimageViewController.swift
+//  CollectionimageViewCell.swift
 //  LookrStore
 //
 //  Created by Keshav Gangwal on 24/06/19.
@@ -8,13 +8,20 @@
 
 import UIKit
 
-class CollectionimageViewController: UICollectionViewCell {
+protocol CollectionimageViewCellDelegate: class {
+    func didDeleteSKU(_ sku: Int)
+
+}
+
+class CollectionimageViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageview: UIImageView!
     @IBOutlet weak var framsimage: UIImageView!
     
     @IBOutlet weak var brandname: UILabel!
     @IBOutlet weak var sku: UILabel!
+    var skuNumber: Int = 0
+    weak var delegate:CollectionimageViewCellDelegate?
     
     
     override func awakeFromNib() {
@@ -38,7 +45,7 @@ class CollectionimageViewController: UICollectionViewCell {
     
 
     @IBAction func deleteButton(_ sender: Any) {
-        
+        delegate?.didDeleteSKU(skuNumber)
         
     }
     

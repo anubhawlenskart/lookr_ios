@@ -170,26 +170,27 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
-                    let data = json["success"] as? [String: Any]
-                    let filters = data!["filters"] as? [String: Any]
+                DispatchQueue.main.async {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                        let data = json["success"] as? [String: Any]
+                        let filters = data!["filters"] as? [String: Any]
 
-                    let brand = filters!["brand"]
-                    let size = filters!["size"]
-                    let shape = filters!["shape"]
+                        let brand = filters!["brand"]
+                        let size = filters!["size"]
+                        let shape = filters!["shape"]
 
-                    self.filterbrandviewArray = brand as! NSArray
-                    self.filtersizeviewArray = size as! NSArray
-                    self.filtershapeviewArray = shape as! NSArray
-                    self.filtercollection.reloadData()
-                    
-                    
-                    
-                } catch let error as NSError {
-                    print(error)
+                        self.filterbrandviewArray = brand as! NSArray
+                        self.filtersizeviewArray = size as! NSArray
+                        self.filtershapeviewArray = shape as! NSArray
+                        self.filtercollection.reloadData()
+                        
+                        
+                        
+                    } catch let error as NSError {
+                        print(error)
+                    }
                 }
-                
             })
             
             task.resume()
@@ -290,6 +291,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterui", for: indexPath as IndexPath) as! FilterUIViewController
         
         if filtertype == "shape" {
+            cell.imageframe.isHidden = false
             let name = ((filtershapeviewArray[indexPath.row] as AnyObject) as! String)
             cell.name.text = name
             if(name == "Aviator"){
@@ -311,10 +313,13 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         }else if filtertype == "brand" {
             let name = ((filterbrandviewArray[indexPath.row] as AnyObject) as! String)
             cell.name.text = name
+             cell.imageframe.isHidden = true
 
         }else if filtertype == "size" {
             let name = ((filtersizeviewArray[indexPath.row] as AnyObject) as! String)
             cell.name.text = name
+            cell.imageframe.isHidden = true
+
 
         }
         

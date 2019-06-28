@@ -57,7 +57,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgG-HX-l9v" customClass="RoundedCornerView" customModule="LookrStore" customModuleProvider="target">
-                                <rect key="frame" x="217" y="37" width="355" height="86"/>
+                                <rect key="frame" x="217" y="37" width="355" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" red="0.1874342859" green="0.46025794739999998" blue="0.43769699340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,7 +78,7 @@
                                 </userDefinedRuntimeAttributes>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y2-Nv-S3t" customClass="RoundedCornerView" customModule="LookrStore" customModuleProvider="target">
-                                <rect key="frame" x="238" y="45" width="130" height="65"/>
+                                <rect key="frame" x="238" y="50" width="130" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -94,35 +94,30 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
                                 </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvd-Ft-SMo">
-                                <rect key="frame" x="441" y="49" width="116" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Sunglasses">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <connections>
+                                    <action selector="eyeglassesAction:" destination="tdy-dq-Aaf" eventType="touchUpInside" id="f7H-mQ-kNn"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qvI-kB-FRu">
-                                <rect key="frame" x="0.0" y="860" width="768" height="157"/>
+                                <rect key="frame" x="0.0" y="834" width="768" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.012723266150000001" green="0.072851993140000001" blue="0.080055736010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MaK-4c-MMO">
-                                    <size key="itemSize" width="154" height="157"/>
+                                    <size key="itemSize" width="156" height="157"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="freamimage" id="NGB-0N-HTd" customClass="WishlistImageViewController" customModule="LookrStore" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="154" height="157"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="freamimage" id="NGB-0N-HTd" customClass="WishlistImageViewCell" customModule="LookrStore" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="156" height="157"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="154" height="157"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="157"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="euU-tx-v91">
-                                                    <rect key="frame" x="0.0" y="0.0" width="154" height="157"/>
+                                                    <rect key="frame" x="16" y="16" width="125" height="125"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -141,7 +136,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOm-7K-0mw">
-                                <rect key="frame" x="77" y="399" width="79" height="79"/>
+                                <rect key="frame" x="77" y="399" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="left_icon"/>
                                 <connections>
@@ -149,7 +144,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KYg-r7-Lbz">
-                                <rect key="frame" x="618" y="399" width="79" height="79"/>
+                                <rect key="frame" x="630" y="399" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="right_icon"/>
                                 <connections>
@@ -171,7 +166,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Mz-ii-jP1">
-                                <rect key="frame" x="501" y="739" width="56" height="56"/>
+                                <rect key="frame" x="501" y="739" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="baseline_photo_camera_white_48pt">
@@ -182,9 +177,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRD-eB-Pbx">
-                                <rect key="frame" x="585" y="192" width="56" height="59"/>
+                                <rect key="frame" x="592" y="174" width="56" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ic_add_circle_48px"/>
+                                <connections>
+                                    <action selector="addToWishlistAction:" destination="tdy-dq-Aaf" eventType="touchUpInside" id="Wgw-ga-KFu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONx-qa-oPt">
                                 <rect key="frame" x="630" y="50" width="90" height="60"/>
@@ -197,7 +195,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOa-Gk-STs">
-                                <rect key="frame" x="608" y="739" width="56" height="56"/>
+                                <rect key="frame" x="608" y="739" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="baseline_exit_to_app_black_48pt">
@@ -220,16 +218,36 @@
                                     <action selector="lablefilter:" destination="tdy-dq-Aaf" eventType="touchUpInside" id="nLL-Po-hQO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvd-Ft-SMo" customClass="RoundedCornerView" customModule="LookrStore" customModuleProvider="target">
+                                <rect key="frame" x="421" y="47" width="116" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Sunglasses">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="setSunglasses:" destination="tdy-dq-Aaf" eventType="touchUpInside" id="KuK-63-IOb"/>
+                                    <action selector="sunglassesAction:" destination="tdy-dq-Aaf" eventType="touchUpInside" id="B7h-mj-KD1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.012723266150000001" green="0.072851993140000001" blue="0.080055736010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="SX5-ek-cuu"/>
                     </view>
                     <connections>
                         <outlet property="brandname" destination="2au-Oy-ScP" id="gfj-hX-iOD"/>
+                        <outlet property="eyeglasses" destination="2y2-Nv-S3t" id="u6q-kF-Cs2"/>
                         <outlet property="fullimage" destination="CLm-iQ-56y" id="CDt-HT-EE7"/>
                         <outlet property="liftbutton" destination="pOm-7K-0mw" id="VJB-fQ-LpB"/>
                         <outlet property="rightbutton" destination="KYg-r7-Lbz" id="0EP-EM-the"/>
                         <outlet property="skuname" destination="epL-4K-Npn" id="GCk-Ka-fQb"/>
+                        <outlet property="sunglasse" destination="qvd-Ft-SMo" id="kT2-NT-F1Y"/>
                         <outlet property="wishlistview" destination="qvI-kB-FRu" id="zie-5E-kFP"/>
                     </connections>
                 </viewController>
@@ -245,33 +263,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLL-8j-T3G">
-                                <rect key="frame" x="10" y="20" width="748" height="336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fLL-8j-T3G">
+                                <rect key="frame" x="0.0" y="20" width="768" height="237"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHr-BH-f5Q" customClass="MBProgressHUDRoundedButton">
-                                        <rect key="frame" x="81" y="180" width="166" height="85"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is Your Number ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHc-2N-EA3">
+                                        <rect key="frame" x="0.0" y="25" width="768" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="QvH-gN-5Eh"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHr-BH-f5Q" customClass="MBProgressHUDRoundedButton">
+                                        <rect key="frame" x="132" y="124" width="180" height="70"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="TV1-WB-Im2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Yes">
-                                            <color key="titleColor" red="0.012723266150000001" green="0.072851993140000001" blue="0.080055736010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="yes:" destination="7VI-Yf-bif" eventType="touchUpInside" id="CmR-sI-VP7"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Is Your Number ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHc-2N-EA3">
-                                        <rect key="frame" x="182" y="71" width="385" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="46"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbm-4t-Y4q" customClass="MBProgressHUDRoundedButton">
-                                        <rect key="frame" x="480" y="180" width="166" height="85"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="150" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbm-4t-Y4q" customClass="MBProgressHUDRoundedButton">
+                                        <rect key="frame" x="470" y="124" width="183" height="70"/>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="183" id="SPp-tO-VyN"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="No">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -283,15 +306,35 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gHr-BH-f5Q" firstAttribute="baseline" secondItem="Kbm-4t-Y4q" secondAttribute="firstBaseline" id="8Zt-4z-Xix"/>
+                                    <constraint firstItem="gHr-BH-f5Q" firstAttribute="top" secondItem="fHc-2N-EA3" secondAttribute="bottom" constant="69" id="LaV-mR-1jL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kbm-4t-Y4q" secondAttribute="trailing" constant="113" id="ODD-74-vl1"/>
+                                    <constraint firstItem="gHr-BH-f5Q" firstAttribute="leading" secondItem="fLL-8j-T3G" secondAttribute="leading" constant="150" id="Od5-dC-cxI"/>
+                                    <constraint firstItem="fHc-2N-EA3" firstAttribute="leading" secondItem="fLL-8j-T3G" secondAttribute="leading" id="RNw-c4-nLd"/>
+                                    <constraint firstItem="gHr-BH-f5Q" firstAttribute="top" secondItem="Kbm-4t-Y4q" secondAttribute="top" id="a9v-Tv-h9H"/>
+                                    <constraint firstItem="fHc-2N-EA3" firstAttribute="top" secondItem="fLL-8j-T3G" secondAttribute="top" constant="25" id="aWP-A8-ffW"/>
+                                    <constraint firstAttribute="bottom" secondItem="gHr-BH-f5Q" secondAttribute="bottom" constant="58" id="lKp-lB-ekh"/>
+                                    <constraint firstAttribute="trailing" secondItem="fHc-2N-EA3" secondAttribute="trailing" id="rHW-bp-xbq"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="raN-8d-jwq" firstAttribute="trailing" secondItem="fLL-8j-T3G" secondAttribute="trailing" id="1kt-oZ-0ta"/>
+                            <constraint firstItem="fLL-8j-T3G" firstAttribute="leading" secondItem="raN-8d-jwq" secondAttribute="leading" id="Dgt-5o-IAb"/>
+                            <constraint firstItem="fLL-8j-T3G" firstAttribute="top" secondItem="raN-8d-jwq" secondAttribute="top" id="GCb-oY-sh0"/>
+                            <constraint firstItem="raN-8d-jwq" firstAttribute="bottom" secondItem="fLL-8j-T3G" secondAttribute="bottom" constant="723" id="UZC-2U-6Ji"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="raN-8d-jwq"/>
                     </view>
+                    <connections>
+                        <outlet property="textfiled" destination="fHc-2N-EA3" id="tQE-fg-fIA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dtp-ht-RU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1119.53125" y="708.984375"/>
+            <point key="canvasLocation" x="-372" y="711"/>
         </scene>
         <!--Share Collection View Controller-->
         <scene sceneID="WpO-tg-4sj">
@@ -315,7 +358,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jp-Ss-Dbd">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jp-Ss-Dbd" customClass="RoundedCornerView" customModule="LookrStore" customModuleProvider="target">
                                         <rect key="frame" x="521" y="242" width="173" height="111"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -324,6 +367,15 @@
                                         <state key="normal" title="Confirm Share">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="sendbutton:" destination="Vbb-nW-HJn" eventType="touchUpInside" id="cgz-Yw-frP"/>
                                         </connections>
@@ -381,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxn-I1-xYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-423.4375" y="-744.140625"/>
+            <point key="canvasLocation" x="-359" y="-662"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="fPZ-CJ-01O">
@@ -516,7 +568,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hI-lQ-xmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1119.53125" y="-744.140625"/>
+            <point key="canvasLocation" x="-1108" y="-662"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="B0V-rs-oYs">
@@ -563,7 +615,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectioncell" id="j5a-zq-Hmb" customClass="CollectionimageViewController" customModule="LookrStore" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectioncell" id="j5a-zq-Hmb" customClass="CollectionimageViewCell" customModule="LookrStore" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="5.5" width="760" height="685"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -593,14 +645,6 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vtI-we-HRD">
-                                                    <rect key="frame" x="300" y="525" width="160" height="160"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="160" id="VSl-T6-Ay1"/>
-                                                        <constraint firstAttribute="width" constant="160" id="kIf-kl-I5H"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLV-hd-px6">
                                                     <rect key="frame" x="166" y="56" width="72" height="72"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -622,6 +666,14 @@
                                                         <action selector="deleteButton:" destination="j5a-zq-Hmb" eventType="touchUpInside" id="98C-My-VAu"/>
                                                     </connections>
                                                 </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vtI-we-HRD">
+                                                    <rect key="frame" x="330" y="585" width="100" height="100"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="160" id="VSl-T6-Ay1"/>
+                                                        <constraint firstAttribute="width" constant="160" id="kIf-kl-I5H"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -945,8 +997,30 @@
                                             <constraint firstAttribute="width" constant="600" id="ueu-vC-cqg"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your number" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7CJ-Wa-uoJ" customClass="MyButton" customModule="LookrStore" customModuleProvider="target">
-                                        <rect key="frame" x="44" y="220" width="430" height="100"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65h-ld-hXF" customClass="RoundedCornerView" customModule="LookrStore">
+                                        <rect key="frame" x="434" y="220" width="281" height="100"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="281" id="NVh-Na-bWY"/>
+                                            <constraint firstAttribute="height" constant="100" id="xPd-GI-U1u"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="GET STARTED"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="50"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="getStarted:" destination="RTX-vB-O5i" eventType="touchUpInside" id="aAP-K7-brd"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your number" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7CJ-Wa-uoJ" customClass="MyButton" customModule="LookrStore" customModuleProvider="target">
+                                        <rect key="frame" x="63" y="220" width="430" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -974,28 +1048,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65h-ld-hXF" customClass="RoundedCornerView" customModule="LookrStore">
-                                        <rect key="frame" x="434" y="220" width="281" height="100"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="281" id="NVh-Na-bWY"/>
-                                            <constraint firstAttribute="height" constant="100" id="xPd-GI-U1u"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="GET STARTED"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="50"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="getStarted:" destination="RTX-vB-O5i" eventType="touchUpInside" id="aAP-K7-brd"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.28672766690000001" green="0.6778210402" blue="0.67985326049999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.20000000000000001" green="0.35686274509999999" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

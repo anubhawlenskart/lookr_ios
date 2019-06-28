@@ -45,23 +45,29 @@ class ViewController: UIViewController , UITextFieldDelegate {
                     
                     let session = URLSession.shared
                     let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                        do {
-                            let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                            
-                            if let nestedDictionary = str["success"] as? [String: Any] {
-                                // access nested dictionary values by key
-                                for (key, value) in nestedDictionary {
-                                    // access all key / value pairs in dictionary
-                                    print(key)
-                                    print(value)
+                        DispatchQueue.main.async {
+                            if(data != nil){
+                                do {
+                                    let str = try JSONSerialization.jsonObject(with: data!) as? Dictionary<String, AnyObject>
+                                    
+                                    if let nestedDictionary = str?["success"] as? [String: Any] {
+                                        // access nested dictionary values by key
+                                        for (key, value) in nestedDictionary {
+                                            // access all key / value pairs in dictionary
+                                            print(key)
+                                            print(value)
+                                        }
+                                        
+                                        self.loginOtp()
+                                    }
+                                    
+                                    
+                                } catch {
+                                    print("error")
                                 }
-                                
-                                self.loginOtp()
+                            
                             }
                             
-                            
-                        } catch {
-                            print("error")
                         }
                     })
                     
@@ -173,18 +179,20 @@ class ViewController: UIViewController , UITextFieldDelegate {
                 
                 let session = URLSession.shared
                 let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                    do {
-                        let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                        
-                        if let nestedDictionary = str["success"] as? [String: Any] {
-                            // access nested dictionary values by key
-                            let defaults = UserDefaults.standard
+                    DispatchQueue.main.async {
+                        do {
+                            let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
                             
+                            if let nestedDictionary = str["success"] as? [String: Any] {
+                                // access nested dictionary values by key
+                                let defaults = UserDefaults.standard
+                                
+                            }
+                            
+                            
+                        } catch {
+                            print("error")
                         }
-                        
-                        
-                    } catch {
-                        print("error")
                     }
                 })
                 

@@ -21,7 +21,7 @@ class ShareCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         editnumber.becomeFirstResponder()
         
         let tapclose = UITapGestureRecognizer(target: self, action: #selector(CollectionViewController.tappedMeback))

@@ -10,7 +10,11 @@ import UIKit
 
 class WishlistViewController : BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-
+    
+    @IBOutlet weak var eyeglasses: UIButton!
+    @IBOutlet weak var sunglasse: UIButton!
+    
+    
     @IBOutlet weak var fullimage: UIImageView!
     @IBOutlet weak var wishlistview: UICollectionView!
 
@@ -18,9 +22,14 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var brandname: UILabel!
     
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
+    var indexPathmain = 0
     
     var subFreamsArray = NSArray()
     var subeyeglassesArray = NSArray()
+    var subsunglassesArray = NSArray()
+    var collectionviewArray = [[String : AnyObject]]()
+
+    var wishlistedProduct = ""
 
     @IBOutlet weak var liftbutton: UIButton!
     @IBOutlet weak var rightbutton: UIButton!
@@ -48,6 +57,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         wishlistview.delegate = self
         gotocomparisonAPI()
+        
         // Do any additional setup after loading the view.
       
     }
@@ -58,23 +68,55 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     @IBAction func collection(_ sender: Any) {
         
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "collectionui") as! CollectionViewController
-           // self.present(balanceViewController, animated: true, completion: nil)
-             self.navigationController?.pushViewController(balanceViewController, animated: true)
+        self.getsetcomparison()
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "collectionui") as! CollectionViewController
+       // self.present(balanceViewController, animated: true, completion: nil)
+         self.navigationController?.pushViewController(balanceViewController, animated: true)
             
     }
     
-
+    @IBAction func addToWishlistAction(_ sender: UIButton) {
+        
+        setsku(self.skuname.text ?? "")
+        
+    }
+    
+    @IBAction func sunglassesAction(_ sender: UIButton) {
+        
+        self.subFreamsArray = subsunglassesArray
+        self.wishlistview.reloadData()
+        
+        self.setimage(0)
+        
+    }
+    
+    @IBAction func eyeglassesAction(_ sender: UIButton) {
+        
+        self.subFreamsArray = subeyeglassesArray
+        self.wishlistview.reloadData()
+        
+        self.setimage(0)
+    }
+    
+    @IBAction func setSunglasses(_ sender: Any) {
+        
+        
+    }
+    
+    
     @IBAction func leftbutton(_ sender: Any) {
         
-        
+        indexPathmain -= 1
+        setimage(indexPathmain)
     }
     
     
     @IBAction func rightbutton(_ sender: Any) {
         
-        
+        indexPathmain += 1
+        setimage(indexPathmain)
+       
     }
     
     @IBAction func filter(_ sender: Any) {
@@ -134,20 +176,25 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
                 
-                DispatchQueue.main.async {
-                    do {
-                        let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                        
-                        if let nestedDictionary = str["success"] as? [String: Any] {
-                            // access nested dictionary values by key
-                            let defaults = UserDefaults.standard
-                            for (key, value) in nestedDictionary {
-                                // access all key / value pairs in dictionary
+                    DispatchQueue.main.async {
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                            
+                            let data = json["success"] as? [String: Any]
+                            let posts = data?["products"] as? [[String: AnyObject]]
+                            self.collectionviewArray = posts!
+                            
+                            self.collectionviewArray.forEach { (product) in
+                                let skuString = String(self.sku)
+                                if let existingSKU = product["sku"] as? String {
+                                        self.wishlistedProduct.append("\(existingSKU),")
+                                }
+                                
                             }
-                            self.gotogetwishlistAPI()
-                        }
-                        
-                    } catch {
+                        self.gotogetwishlistAPI()
+                        self.gotogeteyeglasseswishlistAPI()
+                            
+                    }catch {
                         print("error")
                     }
                 }
@@ -157,6 +204,10 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             
         }
         
+    }
+    
+    func setsku(_ sku: String) {
+        wishlistedProduct.append("\(sku),")
     }
     
     
@@ -179,10 +230,14 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                         let posts = json["success"] as? [[String: Any]] ?? []
                         self.subFreamsArray = posts as NSArray
+                        self.subsunglassesArray = posts as NSArray
+
                         self.wishlistview.reloadData()
                         
-                        self.gotogeteyeglasseswishlistAPI()
-                       
+                        self.setimage(0)
+
+                        
+                        
                     } catch let error as NSError {
                         print(error)
                     }
@@ -214,7 +269,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                     let posts = json["success"] as? [[String: Any]] ?? []
                     self.subeyeglassesArray = posts as NSArray
-                    self.wishlistview.reloadData()
+                   // self.wishlistview.reloadData()
                     
                 } catch let error as NSError {
                     print(error)
@@ -231,7 +286,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     func getsetcomparison(){
         if let intnumebr = Int(mnumber){
-            let urlstring = "\(LookrConstants.sharedInstance.baseURL)setcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)&sku=\(sku)"
+            let urlstring = "\(LookrConstants.sharedInstance.baseURL)setcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)&sku=\(wishlistedProduct)"
             
             let params = ["":""] as Dictionary<String, String>
             var request = URLRequest(url: URL(string: urlstring)!)
@@ -303,10 +358,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         // get a reference to our storyboard cell
         
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "freamimage", for: indexPath as IndexPath) as! WishlistImageViewController
-        
-       
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "freamimage", for: indexPath as IndexPath) as! WishlistImageViewCell
+    
         let imagePath = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "image") as! String)
         
         let url = URL(string: imagePath)
@@ -328,6 +381,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        indexPathmain = indexPath.row
         
         let sku = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "sku") as! String)
         
@@ -350,6 +404,33 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
 
     }
     
-
+    
+    func setimage(_ index: Int ) {
+    
+        if (index > -1 && index < 300) {
+            let indexpath = IndexPath(row: index, section: 0)
+            if let cell = wishlistview.cellForItem(at: indexpath) as? WishlistImageViewCell {
+                cell.isSelected = true
+            }
+            let sku = ((subFreamsArray[index] as AnyObject).value(forKey: "sku") as! String)
+            self.brandname.text = ((subFreamsArray[index] as AnyObject).value(forKey: "brand") as! String)
+            self.skuname.text = ((subFreamsArray[index] as AnyObject).value(forKey: "sku") as! String)
+            let url = URL(string: "https://d1.lk.api.ditto.com/comparison/?ditto_id="+dittoid+"&product_id="+sku)
+            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            
+            let task = URLSession.shared.dataTask(with: url!) { data, response, error in
+                guard let data = data, error == nil else { return }
+                
+                DispatchQueue.main.async() {    // execute on main thread
+                    self.fullimage.image = UIImage(data: data)
+                }
+            }
+                task.resume()
+            
+            
+            
+        }
+    }
+    
 
 }
