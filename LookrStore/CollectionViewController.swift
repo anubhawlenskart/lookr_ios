@@ -11,20 +11,19 @@ import UIKit
 class CollectionViewController: BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, CollectionimageViewCellDelegate {
     
-    var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
-    var products = "" , newsetsku = ""
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var share: UIImageView!
     @IBOutlet weak var back: UIImageView!
     
+    var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
+    var products = "" , newsetsku = ""
     var collectionviewArray = [[String : AnyObject]]()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapshare = UITapGestureRecognizer(target: self, action: #selector(CollectionViewController.tappedmeshare))
         let tapback = UITapGestureRecognizer(target: self, action: #selector(CollectionViewController.tappedMeback))
-
         back.addGestureRecognizer(tapback)
         back.isUserInteractionEnabled = true
         share.addGestureRecognizer(tapshare)
@@ -45,7 +44,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         }
         
         getcomparisonproduct()
-       
+        
         
     }
     
@@ -119,32 +118,30 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
     }
     
-
+    
     @objc func tappedMeback(){
-           self.navigationController?.popViewController(animated: true)
-
-        //self.view.removeFromSuperview()
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func tappedmeshare()
     {
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shareui") as! ShareCollectionViewController
+<<<<<<< HEAD
         self.navigationController?.present(popOverVC, animated: true, completion: nil)
 
         
+=======
+        navigationController?.present(popOverVC, animated: true, completion: nil)
+>>>>>>> 3a7ee404df0cac1327a942b553e61e9fb3310f6f
     }
-
     
-    //MARK:
-    //MARK: Collection view Delegete and Datasource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
         return 1
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return collectionviewArray.count
+        return collectionviewArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> UIEdgeInsets{
@@ -171,7 +168,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath as IndexPath) as! CollectionimageViewCell
         
-
+        
         let sku = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "sku") as! String)
         let fimage = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "image") as! String)
         
@@ -181,7 +178,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         cell.delegate = self
         cell.skuNumber = Int(sku) ?? 0
         cell.brandname.text = brand
-
+        
         let skuurl = URL(string: "https://d1.lk.api.ditto.com/comparison/?ditto_id="+dittoid+"&product_id="+sku)
         
         let data = try? Data(contentsOf: skuurl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -194,7 +191,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             }
         }
         
-       
+        
         let furl = URL(string: fimage)
         
         let fdata = try? Data(contentsOf: furl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
@@ -206,18 +203,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 cell.framsimage.image = UIImage(data: fdata)
             }
         }
-        
-        
         task.resume()
         ftask.resume()
-
-        
         return cell
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
     }
     
     
@@ -232,11 +220,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             
         }
         newsetsku.removeLast()
-        self.getdeletecomparison()
-        
-        
+        getdeletecomparison()
     }
-    
-    
     
 }

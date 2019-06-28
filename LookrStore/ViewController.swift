@@ -10,18 +10,124 @@ import UIKit
 import Foundation
 
 
-class ViewController: UIViewController , UITextFieldDelegate {
-    
-    
+class ViewController: UIViewController , UITextFieldDelegate, WishListControllerDelegate {
+
     @IBOutlet weak var maleButton: RoundedCornerView!
     @IBOutlet weak var femaleButton: UIButton!
-    var dittoid = "" ,token = ""
     @IBOutlet weak var mobileNumber: UITextField!
+    @IBOutlet weak var image: UIImageView!
+
+    var dittoid = "" ,token = ""
+    var counter = 1
+    var isAnimating = false
+    var timer = Timer()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mobileNumber.becomeFirstResponder()
+        mobileNumber.delegate = self
+        if isAnimating {
+            timer.invalidate()
+            //nextbutton.setTitle("Start Animation", for: [])
+            isAnimating = true
+            
+        } else {
+            
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.animate), userInfo: nil, repeats: true)
+            animate()
+            isAnimating = true
+        }
+    }
+    
+    
+    func loginOtp(){
+        self.showLoader()
+        if let numebr = mobileNumber.text {
+            if let intnumebr = Int(numebr){
+                let urlstring = "\(LookrConstants.sharedInstance.baseURL)login?mobile=\(intnumebr)&apptype=store&otp=1111"
+                let params = ["":""] as Dictionary<String, String>
+                var request = URLRequest(url: URL(string: urlstring)!)
+                request.httpMethod = "POST"
+                request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+                let session = URLSession.shared
+                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                    DispatchQueue.main.async {
+                        do {
+                            let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                            
+                            if let nestedDictionary = str["success"] as? [String: Any] {
+                                // access nested dictionary values by key
+                                let defaults = UserDefaults.standard
+                                for (key, value) in nestedDictionary {
+                                    // access all key / value pairs in dictionary
+                                    if key == "dittoid" {
+                                        self.dittoid = value as! String
+                                        let defaults = UserDefaults.standard
+                                        defaults.set(value , forKey: "dittoid")
+                                    }
+                                    if key == "token" {
+                                        let defaults = UserDefaults.standard
+                                        defaults.set(value , forKey: "token")
+                                    }
+                                }
+                                
+                                defaults.set(numebr , forKey: "mobileno")
+                                self.hideLoader(removeFrom: self.view)
+                                
+                                if(self.dittoid == ""){
+                                    self.profileOtp()
+                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
+                                    self.navigationController?.pushViewController(balanceViewController, animated: true)
+                                    
+                                }else{
+                                    
+                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+<<<<<<< HEAD
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! UserFreameViewController
+=======
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
+                                    balanceViewController.delegate = self
+>>>>>>> 3a7ee404df0cac1327a942b553e61e9fb3310f6f
+                                    // self.present(balanceViewController, animated: true, completion: nil)
+                                    self.navigationController?.pushViewController(balanceViewController, animated: true)
+                                }
+                         }
+                        } catch {
+                            print("error")
+                        }
+                    }
+                })
+                
+                task.resume()
+            }
+        }
+    }
+    
+    
+    func profileOtp(){
+        if let numebr = mobileNumber.text {
+            if let intnumebr = Int(numebr){
+                let urlstring = "\(LookrConstants.sharedInstance.baseURL)updateprofile?mobile=\(intnumebr)&name=&gender=&age==16-25"
+                let params = ["":""] as Dictionary<String, String>
+                var request = URLRequest(url: URL(string: urlstring)!)
+                request.httpMethod = "POST"
+                request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                let session = URLSession.shared
+                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                })
+                task.resume()
+            }
+        }
+    }
     
     @IBAction func getStarted(_ sender: Any) {
-        
         if mobileNumber.text == "" {
-            
             let alert = UIAlertController(title: "Error", message: "Enter Mobile Number", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "OK", style : .default , handler: { (action) in
                 self.dismiss(animated: true, completion: nil)
@@ -72,18 +178,17 @@ class ViewController: UIViewController , UITextFieldDelegate {
                     })
                     
                     task.resume()
-                    
-                    
                 }
                 
             }
-            
-            
         }
-        
         
     }
     
+    
+    func didLogOut() {
+        mobileNumber.text = nil
+    }
     
     @IBAction func maleButtonAction(_ sender: UIButton) {
     }
@@ -92,147 +197,19 @@ class ViewController: UIViewController , UITextFieldDelegate {
     @IBAction func femaleButtonAction(_ sender: UIButton) {
     }
     
-    func loginOtp(){
-        if let numebr = mobileNumber.text {
-            if let intnumebr = Int(numebr){
-                let urlstring = "\(LookrConstants.sharedInstance.baseURL)login?mobile=\(intnumebr)&apptype=store&otp=1111"
-                
-                let params = ["":""] as Dictionary<String, String>
-                
-                var request = URLRequest(url: URL(string: urlstring)!)
-                request.httpMethod = "POST"
-                request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
-                
-                let session = URLSession.shared
-                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                    DispatchQueue.main.async {
-                        do {
-                            let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                            
-                            if let nestedDictionary = str["success"] as? [String: Any] {
-                                // access nested dictionary values by key
-                                let defaults = UserDefaults.standard
-                                for (key, value) in nestedDictionary {
-                                    // access all key / value pairs in dictionary
-                                    if key == "dittoid" {
-                                        self.dittoid = value as! String
-                                        let defaults = UserDefaults.standard
-                                        defaults.set(value , forKey: "dittoid")
-                                    }
-                                    if key == "token" {
-                                        let defaults = UserDefaults.standard
-                                        defaults.set(value , forKey: "token")
-                                    }
-                                }
-                                
-                                defaults.set(numebr , forKey: "mobileno")
-                                
-                                if(self.dittoid == ""){
-                                    self.profileOtp()
-                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
-                                    //self.present(balanceViewController, animated: true, completion: nil)
-                                    self.navigationController?.pushViewController(balanceViewController, animated: true)
-                                    
-                                }else{
-                                    
-                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! UserFreameViewController
-                                    // self.present(balanceViewController, animated: true, completion: nil)
-                                    self.navigationController?.pushViewController(balanceViewController, animated: true)
-                                    
-                                    
-                                }
-                                
-                            }
-                            
-                            
-                        } catch {
-                            print("error")
-                        }
-                    }
-                })
-                
-                task.resume()
-                
-            }
-        }
-        
-    }
-    
-    
-    
-    func profileOtp(){
-        if let numebr = mobileNumber.text {
-            if let intnumebr = Int(numebr){
-                let urlstring = "\(LookrConstants.sharedInstance.baseURL)updateprofile?mobile=\(intnumebr)&name=&gender=&age==16-25"
-                
-                let params = ["":""] as Dictionary<String, String>
-                
-                var request = URLRequest(url: URL(string: urlstring)!)
-                request.httpMethod = "POST"
-                request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
-                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
-                
-                let session = URLSession.shared
-                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-                    DispatchQueue.main.async {
-                        do {
-                            let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                            
-                            if let nestedDictionary = str["success"] as? [String: Any] {
-                                // access nested dictionary values by key
-                                let defaults = UserDefaults.standard
-                                
-                            }
-                            
-                            
-                        } catch {
-                            print("error")
-                        }
-                    }
-                })
-                
-                task.resume()
-                
-            }
-        }
-        
-    }
-    //@IBOutlet var image: UIImageView!
-    
-    @IBOutlet weak var image: UIImageView!
-    var counter = 1
-    
-    
-    var isAnimating = false
-    
-    var timer = Timer()
     
     @objc func animate() {
-        
         image.image = UIImage(named: "katimages.imageset/frame_\(counter)_delay-0.08s.gif")
-        
         counter += 1
-        
         if counter == 31 {
-            
             counter = 0
-            
-            
         }
         
     }
     
     
     @IBAction func next(_ sender: AnyObject) {
-        
-        
         if isAnimating {
-            
             timer.invalidate()
             //nextbutton.setTitle("Start Animation", for: [])
             isAnimating = true
@@ -242,43 +219,11 @@ class ViewController: UIViewController , UITextFieldDelegate {
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.animate), userInfo: nil, repeats: true)
             animate()
             //nextbutton.setTitle("Stop Animation", for: [])
-            
             isAnimating = true
-            
         }
-        
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mobileNumber.becomeFirstResponder()
-        mobileNumber.delegate = self
-        if isAnimating {
-            
-            timer.invalidate()
-            //nextbutton.setTitle("Start Animation", for: [])
-            isAnimating = true
-            
-        } else {
-            
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.animate), userInfo: nil, repeats: true)
-            animate()
-            //nextbutton.setTitle("Stop Animation", for: [])
-            
-            isAnimating = true
-            
-        }
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         self.view.endEditing(true)
     }
     
