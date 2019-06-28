@@ -130,19 +130,23 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBAction func lablefilter(_ sender: Any) {
         
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "filter") as! FilterViewController
-        self.addChild(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParent: self)
+       
+        // popOverVC.view.frame = self.view.frame
+        // self.view.addSubview(popOverVC.view)
+        // popOverVC.didMove(toParent: self)
+        self.navigationController?.present(popOverVC, animated: true, completion: nil)
+
+
         
     }
     @IBAction func chnageditto(_ sender: Any) {
         
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "chnageditto") as! ChnageDittoViewController
-        self.addChild(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.didMove(toParent: self)
+       // self.addChild(popOverVC)
+       // popOverVC.view.frame = self.view.frame
+       // self.view.addSubview(popOverVC.view)
+       // popOverVC.didMove(toParent: self)
+        self.navigationController?.pushViewController(popOverVC, animated: true)
         
     }
     

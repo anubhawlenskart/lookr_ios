@@ -218,6 +218,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                     let data = json["success"] as? [String: Any]
                     self.dismiss(animated: true, completion: nil)
+                    //self.navigationController?.dismiss(animated: true, completion: nil)
 
                     
                 } catch let error as NSError {
