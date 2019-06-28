@@ -10,24 +10,20 @@ import UIKit
 
 class FilterViewController: BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-
+    
     @IBOutlet weak var filtercollection: UICollectionView!
     
     var userfilterviewArray = [[String : AnyObject]]()
     var filterviewArray = [[String : AnyObject]]()
-
     var filterbrandviewArray = NSArray()
     var filtershapeviewArray = NSArray()
     var filtersizeviewArray = NSArray()
-    
-    
     var dittoid = "" ,token = "" , mnumber = "" , filtertype = "shape"
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
+        
+        
         filtercollection.dataSource = self
         filtercollection.delegate = self
         
@@ -66,7 +62,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 
                 filtertype = "brand"
                 self.filtercollection.reloadData()
-
+                
             }else if filtertype == "brand" {
                 
                 filtertype = "size"
@@ -82,14 +78,14 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 
                 filtertype = "shape"
                 self.filtercollection.reloadData()
-
+                
                 
             }else if filtertype == "size" {
                 
                 filtertype = "brand"
                 self.filtercollection.reloadData()
             }
-           
+            
         }
     }
     
@@ -98,7 +94,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         filtertype = "shape"
         self.filtercollection.reloadData()
-
+        
         
     }
     
@@ -106,17 +102,17 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBAction func brand(_ sender: Any) {
         filtertype = "brand"
         self.filtercollection.reloadData()
-
+        
         
     }
     
     @IBAction func framesize(_ sender: Any) {
         filtertype = "size"
         self.filtercollection.reloadData()
-
+        
     }
     
-
+    
     @IBAction func clearFilter(_ sender: Any) {
         gotoClearfilterAPI()
     }
@@ -152,7 +148,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             task.resume()
             
         }
-        
     }
     
     
@@ -175,11 +170,11 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                         let data = json["success"] as? [String: Any]
                         let filters = data!["filters"] as? [String: Any]
-
+                        
                         let brand = filters!["brand"]
                         let size = filters!["size"]
                         let shape = filters!["shape"]
-
+                        
                         self.filterbrandviewArray = brand as! NSArray
                         self.filtersizeviewArray = size as! NSArray
                         self.filtershapeviewArray = shape as! NSArray
@@ -192,7 +187,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     }
                 }
             })
-            
             task.resume()
             
         }
@@ -218,8 +212,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                     let data = json["success"] as? [String: Any]
                     self.dismiss(animated: true, completion: nil)
-                    //self.navigationController?.dismiss(animated: true, completion: nil)
-
                     
                 } catch let error as NSError {
                     print(error)
@@ -232,19 +224,11 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         }
         
     }
-    
-    
-    
-    
+  
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
-    //MARK:
-    //MARK: Collection view Delegete and Datasource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return 1
@@ -268,26 +252,17 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> UIEdgeInsets{
-        
         let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
         let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
         
         let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
         let rightInset = leftInset
-        
         return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-        
-        //  return CGSize(width: (collectionView.frame.size.width - 30 ) / 2 , height: (UIScreen.main.bounds.size.height * (180/667)) + 15)
         
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        print(indexPath.section , indexPath.row ,collectionView.tag)
-        
-        // get a reference to our storyboard cell
-       
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "filterui", for: indexPath as IndexPath) as! FilterUIViewController
         
@@ -310,27 +285,19 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             }else if(name == "Clubmaster"){
                 cell.imageframe.image = UIImage(named: "clubmaster.png")
             }
-
+            
         }else if filtertype == "brand" {
             let name = ((filterbrandviewArray[indexPath.row] as AnyObject) as! String)
             cell.name.text = name
-             cell.imageframe.isHidden = true
-
+            cell.imageframe.isHidden = true
+            
         }else if filtertype == "size" {
             let name = ((filtersizeviewArray[indexPath.row] as AnyObject) as! String)
             cell.name.text = name
             cell.imageframe.isHidden = true
-
-
         }
-        
-        
         
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-    }
-
+    
 }
