@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol WishListControllerDelegate: class {
+    func didLogOut()
+}
+
 class WishlistViewController : BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
@@ -21,6 +25,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var skuname: UILabel!
     @IBOutlet weak var brandname: UILabel!
     
+    weak var delegate: WishListControllerDelegate?
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
     var indexPathmain = 0
     
@@ -152,15 +157,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     
     @IBAction func logout(_ sender: Any) {
-        
-        DispatchQueue.main.async {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
-           // self.present(balanceViewController, animated: true, completion: nil)
-             self.navigationController?.pushViewController(balanceViewController, animated: true)
-            
-        }
-        
+        delegate?.didLogOut()
+         self.navigationController?.popViewController(animated: true)
     }
     
     

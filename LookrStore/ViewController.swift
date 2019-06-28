@@ -10,9 +10,8 @@ import UIKit
 import Foundation
 
 
-class ViewController: UIViewController , UITextFieldDelegate {
-    
-    
+class ViewController: UIViewController , UITextFieldDelegate, WishListControllerDelegate {
+
     @IBOutlet weak var maleButton: RoundedCornerView!
     @IBOutlet weak var femaleButton: UIButton!
     var dittoid = "" ,token = ""
@@ -81,7 +80,12 @@ class ViewController: UIViewController , UITextFieldDelegate {
             
         }
         
-        
+    }
+    
+    
+    
+    func didLogOut() {
+        mobileNumber.text = nil
     }
     
     
@@ -93,6 +97,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
     }
     
     func loginOtp(){
+        self.showLoader()
         if let numebr = mobileNumber.text {
             if let intnumebr = Int(numebr){
                 let urlstring = "\(LookrConstants.sharedInstance.baseURL)login?mobile=\(intnumebr)&apptype=store&otp=1111"
@@ -128,7 +133,8 @@ class ViewController: UIViewController , UITextFieldDelegate {
                                 }
                                 
                                 defaults.set(numebr , forKey: "mobileno")
-                                
+                                self.hideLoader(removeFrom: self.view)
+
                                 if(self.dittoid == ""){
                                     self.profileOtp()
                                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -140,6 +146,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                                     
                                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                                     let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
+                                   balanceViewController.delegate = self
                                     // self.present(balanceViewController, animated: true, completion: nil)
                                     self.navigationController?.pushViewController(balanceViewController, animated: true)
                                     
