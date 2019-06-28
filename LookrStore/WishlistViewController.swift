@@ -1,5 +1,5 @@
 //
-//  WishlistViewController.swift
+//  UserFreameViewController.swift
 //  LookrStore
 //
 //  Created by Keshav Gangwal on 20/06/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WishlistViewController : BaseViewController ,
+class UserFreameViewController : BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var eyeglasses: UIButton!
@@ -34,6 +34,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var liftbutton: UIButton!
     @IBOutlet weak var rightbutton: UIButton!
     
+    @IBOutlet weak var imageCirleView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,18 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         fullimage.layer.borderColor = UIColor.white.cgColor
         
         wishlistview.delegate = self
+        
+        
+        imageCirleView.layer.borderWidth = 2.0
+        imageCirleView.layer.masksToBounds = false
+        imageCirleView.layer.borderColor = LookrConstants.sharedInstance.color.cgColor
+        //imageCirleView.layer.borderColor = UIColor.white.cgColor
+
+        imageCirleView.layer.cornerRadius = imageCirleView.frame.height/2
+        imageCirleView.clipsToBounds = true
+        
+        
+        
         gotocomparisonAPI()
         
         // Do any additional setup after loading the view.
@@ -341,6 +354,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> UIEdgeInsets{
+
         
         let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
         let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
@@ -349,8 +363,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         let rightInset = leftInset
         
         return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-        
-      //  return CGSize(width: (collectionView.frame.size.width - 30 ) / 2 , height: (UIScreen.main.bounds.size.height * (180/667)) + 15)
         
     }
     

@@ -4,7 +4,6 @@
 //
 //  Created by Keshav Gangwal on 25/06/19.
 //  Copyright © 2019 Lenskart. All rights reserved.
-//
 
 
 import Foundation
@@ -15,6 +14,8 @@ class LookrConstants: NSObject {
     static let sharedInstance = LookrConstants()
     let baseURL  = "https://labs.lenskart.com/v108/lookr/api/"
     let baseSMS  = "https://labs.lenskart.com/v108/api/"
+    let color =  UIColor(red:0.33, green:0.73, blue:0.78, alpha:1)
+
 
 
 }

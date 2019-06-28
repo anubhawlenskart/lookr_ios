@@ -23,7 +23,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Ditto Create " id="YbC-t6-TN0">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zf8-Zd-yKp"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Zf8-Zd-yKp">
+                                            <connections>
+                                                <action selector="cancelAction:" destination="i9H-gZ-2Rs" id="rS7-eW-QGF"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -48,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="-1107.8125" y="43.9453125"/>
         </scene>
-        <!--Wishlist View Controller-->
+        <!--User Freame View Controller-->
         <scene sceneID="N2R-lZ-5EZ">
             <objects>
-                <viewController storyboardIdentifier="wishlistui" id="tdy-dq-Aaf" customClass="WishlistViewController" customModule="LookrStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="wishlistui" id="tdy-dq-Aaf" customClass="UserFreameViewController" customModule="LookrStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3g5-1t-Mkb">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,9 +120,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="156" height="157"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="euU-tx-v91">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="euU-tx-v91">
                                                     <rect key="frame" x="16" y="16" width="125" height="125"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -236,6 +241,10 @@
                                     <action selector="sunglassesAction:" destination="tdy-dq-Aaf" eventType="touchUpInside" id="B7h-mj-KD1"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ovh-ut-I0X">
+                                <rect key="frame" x="322" y="855" width="123" height="123"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.012723266150000001" green="0.072851993140000001" blue="0.080055736010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="SX5-ek-cuu"/>
@@ -244,6 +253,7 @@
                         <outlet property="brandname" destination="2au-Oy-ScP" id="gfj-hX-iOD"/>
                         <outlet property="eyeglasses" destination="2y2-Nv-S3t" id="u6q-kF-Cs2"/>
                         <outlet property="fullimage" destination="CLm-iQ-56y" id="CDt-HT-EE7"/>
+                        <outlet property="imageCirleView" destination="Ovh-ut-I0X" id="EY3-dh-rHI"/>
                         <outlet property="liftbutton" destination="pOm-7K-0mw" id="VJB-fQ-LpB"/>
                         <outlet property="rightbutton" destination="KYg-r7-Lbz" id="0EP-EM-the"/>
                         <outlet property="skuname" destination="epL-4K-Npn" id="GCk-Ka-fQb"/>

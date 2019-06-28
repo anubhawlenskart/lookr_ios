@@ -129,9 +129,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @objc func tappedmeshare()
     {
         let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shareui") as! ShareCollectionViewController
-       // popOverVC.view.frame = self.view.frame
-       // self.view.addSubview(popOverVC.view)
-       // popOverVC.didMove(toParent: self)
         self.navigationController?.present(popOverVC, animated: true, completion: nil)
 
         

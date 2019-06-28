@@ -21,7 +21,7 @@ class WishlistImageViewCell: UICollectionViewCell {
         image.layer.masksToBounds = false
         image.layer.borderColor = UIColor.white.cgColor
         image.layer.backgroundColor = UIColor.white.cgColor
-        image.layer.cornerRadius = (self.frame.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
+        image.layer.cornerRadius = (self.frame.width / 2) 
         image.clipsToBounds = true
 
     }
@@ -29,7 +29,7 @@ class WishlistImageViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                self.image.image = nil
+               // self.image.image = nil
             }
             
         }

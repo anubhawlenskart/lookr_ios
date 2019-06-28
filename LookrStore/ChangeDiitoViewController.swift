@@ -38,19 +38,17 @@ class ChnageDittoViewController: UIViewController {
     
     @IBAction func yes(_ sender: Any) {
         
-        DispatchQueue.main.async {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "dittoui") as! DittoViewController
-            self.present(balanceViewController, animated: true, completion: nil)
-            
-        }
+           // self.present(balanceViewController, animated: true, completion: nil)
+          self.navigationController?.pushViewController(balanceViewController, animated: true)
         
     }
     
     
     @IBAction func no(_ sender: Any) {
         
-        self.view.removeFromSuperview()
+        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     

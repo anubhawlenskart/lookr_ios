@@ -139,7 +139,7 @@ class ViewController: UIViewController , UITextFieldDelegate {
                                 }else{
                                     
                                     let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! WishlistViewController
+                                    let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! UserFreameViewController
                                     // self.present(balanceViewController, animated: true, completion: nil)
                                     self.navigationController?.pushViewController(balanceViewController, animated: true)
                                     

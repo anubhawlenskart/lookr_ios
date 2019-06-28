@@ -28,7 +28,6 @@
 		CF21CBD622C2424900F3CF8B /* sports.png in Resources */ = {isa = PBXBuildFile; fileRef = CF21CBC922C2424900F3CF8B /* sports.png */; };
 		CF21CBD722C2424900F3CF8B /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = CF21CBCA22C2424900F3CF8B /* square.png */; };
 		CF23954F22AE6136003A586A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23954E22AE6136003A586A /* MBProgressHUD.m */; };
-		CF23955122AE72ED003A586A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF23955022AE72ED003A586A /* HomeViewController.swift */; };
 		CF638EB722BB508A005D53F0 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF638EB622BB508A005D53F0 /* WishlistViewController.swift */; };
 		CF638EB922BB5888005D53F0 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF638EB822BB5888005D53F0 /* CollectionViewController.swift */; };
 		CF638EBB22BB5E56005D53F0 /* katimages.imageset in Resources */ = {isa = PBXBuildFile; fileRef = CF638EBA22BB5E55005D53F0 /* katimages.imageset */; };
@@ -92,7 +91,6 @@
 		CF23954C22AE6135003A586A /* LookrStore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LookrStore-Bridging-Header.h"; sourceTree = "<group>"; };
 		CF23954D22AE6136003A586A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		CF23954E22AE6136003A586A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		CF23955022AE72ED003A586A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CF638EB622BB508A005D53F0 /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		CF638EB822BB5888005D53F0 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		CF638EBA22BB5E55005D53F0 /* katimages.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = katimages.imageset; path = Assets.xcassets/katimages.imageset; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 				CF7A752E22A8E0C600E03536 /* LaunchScreen.storyboard */,
 				CF7A753122A8E0C600E03536 /* Info.plist */,
 				CF23954C22AE6135003A586A /* LookrStore-Bridging-Header.h */,
-				CF23955022AE72ED003A586A /* HomeViewController.swift */,
 				CFFDBABA22B23BD300B80BF6 /* DittoViewController.swift */,
 				CF638EB622BB508A005D53F0 /* WishlistViewController.swift */,
 				CF638EB822BB5888005D53F0 /* CollectionViewController.swift */,
@@ -418,7 +415,6 @@
 				CF21CBB322C20B1500F3CF8B /* ChangeDiitoViewController.swift in Sources */,
 				CF638EB922BB5888005D53F0 /* CollectionViewController.swift in Sources */,
 				CF23954F22AE6136003A586A /* MBProgressHUD.m in Sources */,
-				CF23955122AE72ED003A586A /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
