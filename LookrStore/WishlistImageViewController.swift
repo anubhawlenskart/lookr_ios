@@ -15,13 +15,10 @@ class WishlistImageViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        image.layer.borderWidth = 1
-        image.layer.masksToBounds = false
-        image.layer.borderColor = UIColor.white.cgColor
-        image.layer.backgroundColor = UIColor.white.cgColor
-        image.layer.cornerRadius = (self.frame.width / 2) 
-        image.clipsToBounds = true
+        
+        image.roundedImage()
 
+        
     }
     
     override var isSelected: Bool {
@@ -32,5 +29,15 @@ class WishlistImageViewCell: UICollectionViewCell {
         }
     }
     
+    
+}
 
+
+extension UIImageView {
+    
+    func roundedImage() {
+        self.layer.cornerRadius = self.frame.size.width / 2
+        self.clipsToBounds = true
+    }
+    
 }

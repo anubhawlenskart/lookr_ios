@@ -21,6 +21,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var wishlistview: UICollectionView!
     @IBOutlet weak var skuname: UILabel!
     @IBOutlet weak var brandname: UILabel!
+    @IBOutlet var viewOutlet: UIView!
     @IBOutlet weak var liftbutton: UIButton!
     @IBOutlet weak var rightbutton: UIButton!
     @IBOutlet weak var imageCirleView: UIView!
@@ -59,12 +60,11 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         imageCirleView.layer.borderWidth = 2.0
         imageCirleView.layer.masksToBounds = false
         imageCirleView.layer.borderColor = LookrConstants.sharedInstance.color.cgColor
-        //imageCirleView.layer.borderColor = UIColor.white.cgColor
-
         imageCirleView.layer.cornerRadius = imageCirleView.frame.height/2
         imageCirleView.clipsToBounds = true
         
-        
+        viewOutlet.layer.backgroundColor = LookrConstants.sharedInstance.bgcolor.cgColor
+
         
         gotocomparisonAPI()
         
@@ -144,6 +144,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     
     func gotocomparisonAPI(){
+        self.showLoader()
         if let intnumebr = Int(mnumber){
             let urlstring = "\(LookrConstants.sharedInstance.baseURL)getcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)"
             let params = ["":""] as Dictionary<String, String>
@@ -202,6 +203,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 DispatchQueue.main.async {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
+                        self.hideLoader(removeFrom: self.view)
                         let posts = json["success"] as? [[String: Any]] ?? []
                         self.subFreamsArray = posts as NSArray
                         self.subsunglassesArray = posts as NSArray

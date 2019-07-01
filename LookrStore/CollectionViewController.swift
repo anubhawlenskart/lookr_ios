@@ -14,6 +14,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var share: UIImageView!
     @IBOutlet weak var back: UIImageView!
+    @IBOutlet var viewOutlet: UIView!
     
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
     var products = "" , newsetsku = ""
@@ -30,6 +31,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         share.isUserInteractionEnabled = true
         collectionview.dataSource = self
         collectionview.delegate = self
+        
+        viewOutlet.layer.backgroundColor = LookrConstants.sharedInstance.bgcolor.cgColor
+
         
         let defaults = UserDefaults.standard
         if let stringOne = defaults.string(forKey: "dittoid") {
