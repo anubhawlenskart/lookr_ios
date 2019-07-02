@@ -32,7 +32,7 @@ class DittoViewController: UIViewController ,UIWebViewDelegate{
             mnumber = stringThree
         }
         
-        let url = URL (string: "https://labs.lenskart.com/v108/lookr/mobileapp/dittocreation?mobile="+mnumber+"&apptype=store&env=prod")
+        let url = URL (string: "\(LookrConstants.sharedInstance.baseURL)mobileapp/dittocreation?mobile="+mnumber+"&apptype=store&env=prod")
         let requestObj = URLRequest(url: url!)
         webView.loadRequest(requestObj)
         self.view.addSubview(webView)
@@ -41,6 +41,9 @@ class DittoViewController: UIViewController ,UIWebViewDelegate{
 
 
     }
+    
+    
+    
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         
@@ -54,7 +57,11 @@ class DittoViewController: UIViewController ,UIWebViewDelegate{
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+   
+        self.dismiss(animated: true, completion: nil)
+
     }
+    
     
     func gotodittoAPI(){
         if let intnumebr = Int(mnumber){

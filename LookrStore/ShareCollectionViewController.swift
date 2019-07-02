@@ -98,7 +98,7 @@ class ShareCollectionViewController: UIViewController {
     }
     
     func gotosharewishilistAPI(){
-        var encodedurl =  "\(LookrConstants.sharedInstance.baseURL)mobileapp/comparison?mobile=\(mnumber)filtertype=all&apptype=store" ;
+        var encodedurl =  "\(LookrConstants.sharedInstance.baseURL)mobileapp/comparison?mobile=\(mnumber)&filtertype=all&apptype=store"
         
         
         if let intnumebr = Int(editnumber.text!){

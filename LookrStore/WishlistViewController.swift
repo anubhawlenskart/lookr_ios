@@ -25,7 +25,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var liftbutton: UIButton!
     @IBOutlet weak var rightbutton: UIButton!
     @IBOutlet weak var imageCirleView: UIView!
-
+    @IBOutlet weak var wishlistcountOutlet: UILabel!
+    @IBOutlet var addiconOutlet: UIButton!
+    
     
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
     var indexPathmain = 0
@@ -33,6 +35,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     var subeyeglassesArray = NSArray()
     var subsunglassesArray = NSArray()
     var collectionviewArray = [[String : AnyObject]]()
+    var coutwishlist = 0
     
     var wishlistedProduct = ""
     weak var delegate: WishListControllerDelegate?
@@ -79,7 +82,20 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     }
     
     @IBAction func addToWishlistAction(_ sender: UIButton) {
-        setsku(self.skuname.text ?? "")
+        
+        let string = "\(wishlistedProduct)"
+        addiconOutlet.setImage( UIImage.init(named: "ic_add_circle_red"), for: .normal)
+        if let intnumebr = Int(skuname.text!){
+            if string.contains("\(intnumebr)") {
+                print("exists")
+            }else {
+                
+                self.coutwishlist += 1
+                self.wishlistcountOutlet.text = "\(self.coutwishlist)"
+                setsku(self.skuname.text ?? "")
+            }
+            
+        }
         
     }
     
@@ -169,6 +185,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                                 self.wishlistedProduct.append("\(existingSKU),")
                             }
                         }
+                        self.coutwishlist = self.collectionviewArray.count
+                        self.wishlistcountOutlet.text = "\(self.coutwishlist)"
+                        
                         self.gotogetwishlistAPI()
                         self.gotogeteyeglasseswishlistAPI()
                         
@@ -352,6 +371,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 self.fullimage.image = UIImage(data: data)
             }
         }
+    
+        
+        
         task.resume()
         
     }
@@ -378,6 +400,19 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 }
             }
             task.resume()
+            
+            
+            let string = "\(wishlistedProduct)"
+            if let intnumebr = Int(skuname.text!){
+                if string.contains("\(intnumebr)") {
+                    addiconOutlet.setImage( UIImage.init(named: "ic_add_circle_red"), for: .normal)
+
+                }else {
+                    addiconOutlet.setImage( UIImage.init(named: "ic_add_circle_48px"), for: .normal)
+                        
+                }
+                
+            }
         }
     }
 }
