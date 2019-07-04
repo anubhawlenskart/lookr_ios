@@ -12,8 +12,8 @@ import UIKit
 
 class LookrConstants: NSObject {
     static let sharedInstance = LookrConstants()
-    let baseURL  = "http://52.221.75.148/v109/lookr/api/"
-    let baseSMS  = "http://52.221.75.148/"
+    let baseURL  = "https://omnilabs.lenskart.com/v109/lookr/api/"
+    let baseSMS  = "https://omnilabs.lenskart.com/"
     let color =  UIColor(red:0.33, green:0.73, blue:0.78, alpha:1)
     let bgcolor = UIColor(red:0, green:0.07, blue:0.08, alpha:1)
 

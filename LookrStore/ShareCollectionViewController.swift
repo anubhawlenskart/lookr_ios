@@ -43,6 +43,8 @@ class ShareCollectionViewController: UIViewController {
         editnumber.text = mnumber
         editnumber.removeBorder(false)
         
+        editnumber.setLeftPaddingPoints(100)
+
     }
     
     @objc func tappedMeback(){
@@ -139,3 +141,4 @@ class ShareCollectionViewController: UIViewController {
     }
     
 }
+
