@@ -68,6 +68,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         viewOutlet.layer.backgroundColor = LookrConstants.sharedInstance.bgcolor.cgColor
 
+        //self.wishlistview.scrollEnabled = ; // Disable automated scrolling
+
         
         gotocomparisonAPI()
         
@@ -104,6 +106,17 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         wishlistview.reloadData()
         setimage(0)
         
+        let layer = UIView(frame: CGRect(x: 252.99, y: 33.99, width: 130.62, height: 52.41))
+        layer.layer.cornerRadius = 26.21
+        sunglasse.backgroundColor = UIColor.white
+        self.view.addSubview(layer)
+        
+        sunglasse.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        eyeglasses.setTitleColor(UIColor.white,  for: UIControl.State.normal)
+
+        eyeglasses.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+
+        
     }
     
     @IBAction func eyeglassesAction(_ sender: UIButton) {
@@ -111,9 +124,15 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         subFreamsArray = subeyeglassesArray
         wishlistview.reloadData()
         setimage(0)
-    }
-    
-    @IBAction func setSunglasses(_ sender: Any) {
+        let layer = UIView(frame: CGRect(x: 252.99, y: 33.99, width: 130.62, height: 52.41))
+        layer.layer.cornerRadius = 26.21
+        eyeglasses.backgroundColor = UIColor.white
+        self.view.addSubview(layer)
+        
+        eyeglasses.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        sunglasse.setTitleColor(UIColor.white,  for: UIControl.State.normal)
+
+        sunglasse.backgroundColor = UIColor.white.withAlphaComponent(0.0)
         
     }
     
@@ -324,20 +343,26 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         return subFreamsArray.count
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> UIEdgeInsets{
-
+        
         let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
         let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
+        
         let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
         let rightInset = leftInset
         
         return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-        
     }
+    
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "freamimage", for: indexPath as IndexPath) as! WishlistImageViewCell
+        
+        collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
+
         
         let imagePath = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "image") as! String)
         
@@ -350,12 +375,16 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             }
         }
         task.resume()
+        
+
         return cell
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         indexPathmain = indexPath.row
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true) //here.....
+
         let sku = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "sku") as! String)
         self.brandname.text = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "brand") as! String)
         
@@ -366,7 +395,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         let task = URLSession.shared.dataTask(with: url!) { data, response, error in
             guard let data = data, error == nil else { return }
-            
             DispatchQueue.main.async() {    // execute on main thread
                 self.fullimage.image = UIImage(data: data)
             }
@@ -380,6 +408,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     
     func setimage(_ index: Int ) {
+        
         
         if (index > -1 && index < 300) {
             let indexpath = IndexPath(row: index, section: 0)
@@ -401,7 +430,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             }
             task.resume()
             
-            
             let string = "\(wishlistedProduct)"
             if let intnumebr = Int(skuname.text!){
                 if string.contains("\(intnumebr)") {
@@ -416,3 +444,4 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         }
     }
 }
+

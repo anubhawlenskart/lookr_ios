@@ -188,10 +188,32 @@ class ViewController: UIViewController , UITextFieldDelegate, WishListController
     }
     
     @IBAction func maleButtonAction(_ sender: UIButton) {
+        
+        let layer = UIView(frame: CGRect(x: 252.99, y: 33.99, width: 130.62, height: 52.41))
+        layer.layer.cornerRadius = 26.21
+        maleButton.backgroundColor = UIColor.white
+        self.view.addSubview(layer)
+        
+        maleButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        femaleButton.setTitleColor(UIColor.white,  for: UIControl.State.normal)
+        femaleButton.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+        
+        
     }
     
     
     @IBAction func femaleButtonAction(_ sender: UIButton) {
+        
+        let layer = UIView(frame: CGRect(x: 252.99, y: 33.99, width: 130.62, height: 52.41))
+        layer.layer.cornerRadius = 26.21
+        femaleButton.backgroundColor = UIColor.white
+        self.view.addSubview(layer)
+        
+        femaleButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        maleButton.setTitleColor(UIColor.white,  for: UIControl.State.normal)
+        
+        maleButton.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+        
     }
     
     

@@ -54,6 +54,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     
     func getcomparisonproduct(){
+        self.showLoader()
         if let intnumebr = Int(mnumber){
             let urlstring = "\(LookrConstants.sharedInstance.baseURL)getcomparisonproduct?mobile=\(intnumebr)&dittoid=\(dittoid)"
             
@@ -67,6 +68,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             
             let session = URLSession.shared
             let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                self.hideLoader(removeFrom: self.view)
                 DispatchQueue.main.async {
                     do {
                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
@@ -142,18 +144,22 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         return collectionviewArray.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> UIEdgeInsets{
-        
-        let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
-        let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
-        
-        let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-        let rightInset = leftInset
-        
-        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-        
-        //  return CGSize(width: (collectionView.frame.size.width - 30 ) / 2 , height: (UIScreen.main.bounds.size.height * (180/667)) + 15)
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidth: CGFloat = flowLayout.itemSize.width
+        let cellSpacing: CGFloat = flowLayout.minimumInteritemSpacing
+        let cellCount = CGFloat(collectionView.numberOfItems(inSection: section))
+        var collectionWidth = collectionView.frame.size.width
+        if #available(iOS 11.0, *) {
+            collectionWidth -= collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right
+        }
+        let totalWidth = cellWidth * cellCount + cellSpacing * (cellCount - 1)
+        if totalWidth <= collectionWidth {
+            let edgeInset = (collectionWidth - totalWidth) / 2
+            return UIEdgeInsets(top: flowLayout.sectionInset.top, left: edgeInset, bottom: flowLayout.sectionInset.bottom, right: edgeInset)
+        } else {
+            return flowLayout.sectionInset
+        }
     }
     
     
