@@ -208,7 +208,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath as IndexPath) as! CollectionimageViewCell
         
-        
         let sku = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "sku") as! String)
         let fimage = ((collectionviewArray[indexPath.row] as AnyObject).value(forKey: "image") as! String)
         
@@ -221,19 +220,16 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         let skuurl = URL(string: "https://d1.lk.api.ditto.com/comparison/?ditto_id="+dittoid+"&product_id="+sku)
         
-        let data = try? Data(contentsOf: skuurl!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        
+        let data = try? Data(contentsOf: skuurl!)
         let task = URLSession.shared.dataTask(with: skuurl!) { data, response, error in
             guard let data = data, error == nil else { return }
             
-            DispatchQueue.main.async() {    // execute on main thread
+            DispatchQueue.main.async() {
                 cell.imageview.image = UIImage(data: data)
             }
         }
         
-        
         let furl = URL(string: fimage)
-        
         let fdata = try? Data(contentsOf: furl!)
         let ftask = URLSession.shared.dataTask(with: furl!) { fdata, response, error in
             guard let fdata = fdata, error == nil else { return }
@@ -244,6 +240,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         }
         task.resume()
         ftask.resume()
+            
         return cell
     }
     

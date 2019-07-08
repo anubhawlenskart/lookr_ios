@@ -14,6 +14,8 @@ class LookrConstants: NSObject {
     static let sharedInstance = LookrConstants()
     let baseURL  = "https://omnilabs.lenskart.com/v109/lookr/api/"
     let baseSMS  = "https://omnilabs.lenskart.com/"
+    let dittocreate  = "https://omnilabs.lenskart.com/v109/lookr/"
+
     let color =  UIColor(red:0.33, green:0.73, blue:0.78, alpha:1)
     let bgcolor = UIColor(red:0, green:0.07, blue:0.08, alpha:1)
     let textcolor = UIColor(red:0.33, green:0.73, blue:0.78, alpha:1)

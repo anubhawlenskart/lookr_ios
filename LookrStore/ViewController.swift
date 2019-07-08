@@ -26,6 +26,8 @@ class ViewController: UIViewController , UITextFieldDelegate, WishListController
         super.viewDidLoad()
         mobileNumber.becomeFirstResponder()
         mobileNumber.delegate = self
+        mobileNumber.keyboardType = .decimalPad
+
         if isAnimating {
             timer.invalidate()
             //nextbutton.setTitle("Start Animation", for: [])

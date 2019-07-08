@@ -11,7 +11,6 @@ import UIKit
 class WishlistImageViewCell: UICollectionViewCell {
         
     @IBOutlet weak var image: UIImageView!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +30,8 @@ class WishlistImageViewCell: UICollectionViewCell {
     
     
 }
+
+
 
 
 extension UIImageView {

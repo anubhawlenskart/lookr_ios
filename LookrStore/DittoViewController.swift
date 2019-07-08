@@ -32,7 +32,7 @@ class DittoViewController: UIViewController ,UIWebViewDelegate{
             mnumber = stringThree
         }
         
-        let url = URL (string: "\(LookrConstants.sharedInstance.baseURL)mobileapp/dittocreation?mobile="+mnumber+"&apptype=store&env=prod")
+        let url = URL (string: "\(LookrConstants.sharedInstance.dittocreate)mobileapp/dittocreation?mobile="+mnumber+"&apptype=store&env=prod")
         let requestObj = URLRequest(url: url!)
         webView.loadRequest(requestObj)
         self.view.addSubview(webView)
@@ -47,7 +47,7 @@ class DittoViewController: UIViewController ,UIWebViewDelegate{
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         
-        if request.url?.absoluteString == "https://labs.lenskart.com/v108/lookr/" {
+        if request.url?.absoluteString == "https://omnilabs.lenskart.com/v109/lookr/" {
             
             self.gotodittoAPI()
             
@@ -83,15 +83,25 @@ class DittoViewController: UIViewController ,UIWebViewDelegate{
                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                         
                         let data = json["success"] as? [String: Any]
-                        let dittoid = data?["dittoid"] as? [String: AnyObject]
-                        let defaults = UserDefaults.standard
-                        defaults.set(dittoid , forKey: "dittoid")
+                        if let nestedDictionary = json["success"] as? [String: Any] {
+                            let defaults = UserDefaults.standard
+                            for (key, value) in nestedDictionary {
+                                // access all key / value pairs in dictionary
+                                if key == "dittoid" {
+                                    self.dittoid = value as! String
+                                    let defaults = UserDefaults.standard
+                                    defaults.set(value , forKey: "dittoid")
+                                }
+                                
+                            }
+                            
+                        }
                        
                         DispatchQueue.main.async {
                             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                             let balanceViewController = storyBoard.instantiateViewController(withIdentifier: "wishlistui") as! UserFreameViewController
                             // self.present(balanceViewController, animated: true, completion: nil)
-                            self.navigationController?.pushViewController(balanceViewController, animated: true)
+                             self.navigationController?.pushViewController(balanceViewController, animated: true)
                         }
                       
                         

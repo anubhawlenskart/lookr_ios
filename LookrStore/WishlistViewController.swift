@@ -173,8 +173,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     @IBAction func logout(_ sender: Any) {
         delegate?.didLogOut()
-        self.navigationController?.popViewController(animated: true)
-    }
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        navigationController?.pushViewController(popOverVC, animated: true)    }
     
     
     
@@ -196,19 +196,34 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                     do {
                         let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any]
                         let data = json["success"] as? [String: Any]
-                        let posts = data?["products"] as? [[String: AnyObject]]
-                        self.collectionviewArray = posts!
-                        self.collectionviewArray.forEach { (product) in
-                            let skuString = String(self.sku)
-                            if let existingSKU = product["sku"] as? String {
-                                self.wishlistedProduct.append("\(existingSKU),")
+                        if data != nil {
+                            let posts = data?["products"] as? [[String: AnyObject]]
+                              if posts != nil {
+                                self.collectionviewArray = posts!
+                                self.collectionviewArray.forEach { (product) in
+                                    let skuString = String(self.sku)
+                                    if let existingSKU = product["sku"] as? String {
+                                        self.wishlistedProduct.append("\(existingSKU),")
+                                        
+                                    }
+                                }
+                                self.coutwishlist = self.collectionviewArray.count
+                                self.wishlistcountOutlet.text = "\(self.coutwishlist)"
+                                self.gotogetwishlistAPI()
+                                self.gotogeteyeglasseswishlistAPI()
+                                
+                              }else{
+                                self.gotogetwishlistAPI()
+                                self.gotogeteyeglasseswishlistAPI()
                             }
+                           
+                            
+                        }else{
+                            
+                            self.gotogetwishlistAPI()
+                            self.gotogeteyeglasseswishlistAPI()
+                            
                         }
-                        self.coutwishlist = self.collectionviewArray.count
-                        self.wishlistcountOutlet.text = "\(self.coutwishlist)"
-                        
-                        self.gotogetwishlistAPI()
-                        self.gotogeteyeglasseswishlistAPI()
                         
                     }catch {
                         print("error")
@@ -328,54 +343,28 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
     }
     
-    
-    
-    
-    //MARK:
-    //MARK: Collection view Delegete and Datasource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return subFreamsArray.count
     }
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> UIEdgeInsets{
-        
-        let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
-        let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
-        
-        let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-        let rightInset = leftInset
-        
-        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-    }
-    
+
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "freamimage", for: indexPath as IndexPath) as! WishlistImageViewCell
         
         collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
-
         let imagePath = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "image") as! String)
         
         let url = URL(string: imagePath)
         let data = try? Data(contentsOf: url!)
-        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() {
-                cell.image.image = UIImage(data: data)
-            }
+        if let imageData = data {
+            cell.image.image = UIImage(data: imageData)
         }
-        task.resume()
-        
-
+    
         return cell
         
     }
@@ -386,61 +375,47 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
 
         let sku = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "sku") as! String)
         self.brandname.text = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "brand") as! String)
-        
         self.skuname.text = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "sku") as! String)
         
         let url = URL(string: "https://d1.lk.api.ditto.com/comparison/?ditto_id="+dittoid+"&product_id="+sku)
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        
-        let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() {    // execute on main thread
-                self.fullimage.image = UIImage(data: data)
-            }
+        let data = try? Data(contentsOf: url!)
+        if let imageData = data {
+            self.fullimage.image = UIImage(data: imageData)
         }
-    
-        
-        
-        task.resume()
-        
     }
     
     
     func setimage(_ index: Int ) {
         
-        
         if (index > -1 && index < 300) {
+            
             let indexpath = IndexPath(row: index, section: 0)
             if let cell = wishlistview.cellForItem(at: indexpath) as? WishlistImageViewCell {
                 cell.isSelected = true
             }
+            wishlistview.scrollToItem(at: indexpath, at: .centeredHorizontally, animated: true) //here.....
+
             let sku = ((subFreamsArray[index] as AnyObject).value(forKey: "sku") as! String)
             self.brandname.text = ((subFreamsArray[index] as AnyObject).value(forKey: "brand") as! String)
             self.skuname.text = ((subFreamsArray[index] as AnyObject).value(forKey: "sku") as! String)
             let url = URL(string: "https://d1.lk.api.ditto.com/comparison/?ditto_id="+dittoid+"&product_id="+sku)
-            let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-            
-            let task = URLSession.shared.dataTask(with: url!) { data, response, error in
-                guard let data = data, error == nil else { return }
-                
-                DispatchQueue.main.async() {    // execute on main thread
-                    self.fullimage.image = UIImage(data: data)
-                }
+            let data = try? Data(contentsOf: url!)
+            if let imageData = data {
+                self.fullimage.image = UIImage(data: imageData)
             }
-            task.resume()
-            
             let string = "\(wishlistedProduct)"
             if let intnumebr = Int(skuname.text!){
                 if string.contains("\(intnumebr)") {
                     addiconOutlet.setImage( UIImage.init(named: "ic_add_circle_red"), for: .normal)
-
                 }else {
                     addiconOutlet.setImage( UIImage.init(named: "ic_add_circle_48px"), for: .normal)
-                        
                 }
                 
             }
         }
     }
+    
+    
+    
 }
 

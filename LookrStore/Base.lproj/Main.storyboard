@@ -673,23 +673,13 @@
                                                         <constraint firstAttribute="width" constant="496" id="sDh-On-lUj"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1t-aI-ixt">
-                                                    <rect key="frame" x="169" y="143" width="139" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="139" id="pIj-JA-TRh"/>
-                                                        <constraint firstAttribute="height" constant="32" id="ubs-mv-VgX"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sku" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1Z-Ct-j2z">
-                                                    <rect key="frame" x="361" y="148" width="139" height="32"/>
+                                                    <rect key="frame" x="369" y="148" width="38" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLV-hd-px6">
+                                                <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLV-hd-px6">
                                                     <rect key="frame" x="166" y="56" width="72" height="72"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -702,8 +692,8 @@
                                                         <action selector="info:" destination="j5a-zq-Hmb" eventType="touchUpInside" id="cAw-me-1uK"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzv-Gr-FFE">
-                                                    <rect key="frame" x="555" y="53" width="72" height="72"/>
+                                                <button contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzv-Gr-FFE">
+                                                    <rect key="frame" x="550" y="61" width="72" height="72"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="delete"/>
                                                     <connections>
@@ -718,6 +708,16 @@
                                                         <constraint firstAttribute="width" constant="160" id="kIf-kl-I5H"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1t-aI-ixt">
+                                                    <rect key="frame" x="157" y="142" width="159" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="159" id="Los-Zm-x9G"/>
+                                                        <constraint firstAttribute="height" constant="32" id="ubs-mv-VgX"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" red="0.01176470588" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -726,14 +726,13 @@
                                             <constraint firstItem="vtI-we-HRD" firstAttribute="centerX" secondItem="j5a-zq-Hmb" secondAttribute="centerX" id="3OV-jh-EYH"/>
                                             <constraint firstItem="jLV-hd-px6" firstAttribute="top" secondItem="kaZ-ch-aMy" secondAttribute="top" id="8Na-2B-aEs"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="vtI-we-HRD" secondAttribute="bottom" constant="20" id="Btd-Dv-UsS"/>
+                                            <constraint firstItem="g1Z-Ct-j2z" firstAttribute="leading" secondItem="G1t-aI-ixt" secondAttribute="trailing" constant="27" id="Bu3-kG-8Up"/>
                                             <constraint firstItem="g1Z-Ct-j2z" firstAttribute="top" secondItem="j5a-zq-Hmb" secondAttribute="top" constant="148" id="TkY-97-zuj"/>
-                                            <constraint firstItem="g1Z-Ct-j2z" firstAttribute="leading" secondItem="G1t-aI-ixt" secondAttribute="trailing" constant="53" id="UH5-Bp-qVu"/>
                                             <constraint firstItem="jLV-hd-px6" firstAttribute="leading" secondItem="kaZ-ch-aMy" secondAttribute="leading" id="bfF-Ev-vMe"/>
                                             <constraint firstItem="g1Z-Ct-j2z" firstAttribute="height" secondItem="G1t-aI-ixt" secondAttribute="height" id="fFE-Ja-vE6"/>
                                             <constraint firstItem="kaZ-ch-aMy" firstAttribute="centerX" secondItem="j5a-zq-Hmb" secondAttribute="centerX" id="iib-Lu-Zc0"/>
                                             <constraint firstItem="kaZ-ch-aMy" firstAttribute="centerY" secondItem="j5a-zq-Hmb" secondAttribute="centerY" id="krO-ld-UNq"/>
                                             <constraint firstItem="G1t-aI-ixt" firstAttribute="top" secondItem="jLV-hd-px6" secondAttribute="bottom" constant="18" id="n3n-Z9-sFR"/>
-                                            <constraint firstItem="g1Z-Ct-j2z" firstAttribute="width" secondItem="G1t-aI-ixt" secondAttribute="width" id="wuz-3b-1Ey"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="brandname" destination="G1t-aI-ixt" id="d4O-7O-55M"/>
@@ -774,7 +773,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjf-Tt-s43" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="362" y="44"/>
+            <point key="canvasLocation" x="361.71875" y="43.9453125"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sLX-iZ-DPB">
