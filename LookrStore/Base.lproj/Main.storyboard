@@ -766,6 +766,7 @@
                     <connections>
                         <outlet property="back" destination="ykD-dY-gvO" id="aQV-S2-xaU"/>
                         <outlet property="collectionview" destination="7Zz-nN-QVy" id="Mmr-wW-Jwo"/>
+                        <outlet property="collectionviewLayout" destination="34b-DT-cNX" id="cVO-Wi-Iz0"/>
                         <outlet property="share" destination="DKB-qa-m01" id="zOp-fP-hZY"/>
                         <outlet property="viewOutlet" destination="HaY-S6-kda" id="koA-WB-3To"/>
                         <outletCollection property="back" destination="ykD-dY-gvO" collectionClass="NSMutableArray" id="wek-7L-xBY"/>

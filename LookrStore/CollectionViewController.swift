@@ -12,6 +12,8 @@ import UIKit
 class CollectionViewController: BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, CollectionimageViewCellDelegate {
     
+    @IBOutlet weak var collectionviewLayout: UICollectionViewFlowLayout!
+    
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var share: UIImageView!
     @IBOutlet weak var back: UIImageView!
@@ -21,6 +23,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     var products = "" , newsetsku = ""
     var collectionviewArray = [[String : AnyObject]]()
     
+    private var indexOfCellBeforeDragging = 0
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         collectionview.dataSource = self
         collectionview.delegate = self
         
+        collectionviewLayout.minimumLineSpacing = 0
 
        // viewOutlet.layer.backgroundColor = LookrConstants.sharedInstance.bgcolor.cgColor
 
@@ -52,6 +57,40 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         getcomparisonproduct()
         
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        configureCollectionViewLayoutItemSize()
+    }
+    
+    
+    private func calculateSectionInset() -> CGFloat {
+        let deviceIsIpad = UIDevice.current.userInterfaceIdiom == .pad
+        let deviceOrientationIsLandscape = UIDevice.current.orientation.isLandscape
+        let cellBodyViewIsExpended = deviceIsIpad || deviceOrientationIsLandscape
+        let cellBodyWidth: CGFloat = 236 + (cellBodyViewIsExpended ? 174 : 0)
+        
+        let buttonWidth: CGFloat = 50
+        
+        let inset = (collectionviewLayout.collectionView!.frame.width - cellBodyWidth + buttonWidth) / 4
+        return inset
+    }
+    
+    private func configureCollectionViewLayoutItemSize() {
+        let inset: CGFloat = calculateSectionInset() // This inset calculation is some magic so the next and the previous cells will peek from the sides. Don't worry about it
+        collectionviewLayout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        
+        collectionviewLayout.itemSize = CGSize(width: collectionviewLayout.collectionView!.frame.size.width - inset * 2, height: collectionviewLayout.collectionView!.frame.size.height)
+    }
+    
+    private func indexOfMajorCell() -> Int {
+        let itemWidth = collectionviewLayout.itemSize.width
+        let proportionalOffset = collectionviewLayout.collectionView!.contentOffset.x / itemWidth
+        let index = Int(round(proportionalOffset))
+        let safeIndex = max(0, min(collectionviewArray.count - 1, index))
+        return safeIndex
     }
     
     
@@ -167,11 +206,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        print(indexPath.section , indexPath.row ,collectionView.tag)
-        
-        // get a reference to our storyboard cell
-        
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectioncell", for: indexPath as IndexPath) as! CollectionimageViewCell
         
         
@@ -225,6 +259,44 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         }
         newsetsku.removeLast()
         getdeletecomparison()
+    }
+    
+    
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        indexOfCellBeforeDragging = indexOfMajorCell()
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // Stop scrollView sliding:
+        targetContentOffset.pointee = scrollView.contentOffset
+        
+        // calculate where scrollView should snap to:
+        let indexOfMajorCell = self.indexOfMajorCell()
+        
+        // calculate conditions:
+        let swipeVelocityThreshold: CGFloat = 0.5 // after some trail and error
+        let hasEnoughVelocityToSlideToTheNextCell = indexOfCellBeforeDragging + 1 < collectionviewArray.count && velocity.x > swipeVelocityThreshold
+        let hasEnoughVelocityToSlideToThePreviousCell = indexOfCellBeforeDragging - 1 >= 0 && velocity.x < -swipeVelocityThreshold
+        let majorCellIsTheCellBeforeDragging = indexOfMajorCell == indexOfCellBeforeDragging
+        let didUseSwipeToSkipCell = majorCellIsTheCellBeforeDragging && (hasEnoughVelocityToSlideToTheNextCell || hasEnoughVelocityToSlideToThePreviousCell)
+        
+        if didUseSwipeToSkipCell {
+            
+            let snapToIndex = indexOfCellBeforeDragging + (hasEnoughVelocityToSlideToTheNextCell ? 1 : -1)
+            let toValue = collectionviewLayout.itemSize.width * CGFloat(snapToIndex)
+            
+            // Damping equal 1 => no oscillations => decay animation:
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: velocity.x, options: .allowUserInteraction, animations: {
+                scrollView.contentOffset = CGPoint(x: toValue, y: 0)
+                scrollView.layoutIfNeeded()
+            }, completion: nil)
+            
+        } else {
+            // This is a much better way to scroll to a cell:
+            let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
+            collectionviewLayout.collectionView!.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
     
 }
