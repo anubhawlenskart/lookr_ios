@@ -16,8 +16,9 @@ class LookrConstants: NSObject {
     let baseSMS  = "https://omnilabs.lenskart.com/"
     let color =  UIColor(red:0.33, green:0.73, blue:0.78, alpha:1)
     let bgcolor = UIColor(red:0, green:0.07, blue:0.08, alpha:1)
-
-
+    let textcolor = UIColor(red:0.33, green:0.73, blue:0.78, alpha:1)
+    let textcolorblack = UIColor(red:0, green:0.07, blue:0.08, alpha:1)
+    let buttonbg = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1)
 
 }
 let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -13,6 +13,12 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     
     @IBOutlet weak var filtercollection: UICollectionView!
     
+    @IBOutlet weak var brandOutlet: UIButton!
+    @IBOutlet weak var freamsizeOutlet: UIButton!
+    
+    @IBOutlet weak var shapeOutlet: UIButton!
+    
+    @IBOutlet weak var viewOutlet: UIView!
     var userfilterviewArray = [[String : AnyObject]]()
     var filterviewArray = [[String : AnyObject]]()
     var filterbrandviewArray = NSArray()
@@ -61,10 +67,18 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
             if filtertype == "shape" {
                 
                 filtertype = "brand"
+                
+                brandOutlet.setTitleColor(LookrConstants.sharedInstance.textcolor, for: .normal)
+                shapeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+                freamsizeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+
                 self.filtercollection.reloadData()
                 
             }else if filtertype == "brand" {
-                
+                freamsizeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolor, for: .normal)
+                shapeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+                brandOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+
                 filtertype = "size"
                 self.filtercollection.reloadData()
                 
@@ -78,11 +92,18 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
                 
                 filtertype = "shape"
                 self.filtercollection.reloadData()
-                
+                shapeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolor, for: .normal)
+                brandOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+                freamsizeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+
                 
             }else if filtertype == "size" {
                 
                 filtertype = "brand"
+                brandOutlet.setTitleColor(LookrConstants.sharedInstance.textcolor, for: .normal)
+                shapeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+                freamsizeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+
                 self.filtercollection.reloadData()
             }
             
@@ -94,6 +115,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         filtertype = "shape"
         self.filtercollection.reloadData()
+        brandOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+        shapeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolor, for: .normal)
+        freamsizeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
         
         
     }
@@ -102,6 +126,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBAction func brand(_ sender: Any) {
         filtertype = "brand"
         self.filtercollection.reloadData()
+        shapeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+        brandOutlet.setTitleColor(LookrConstants.sharedInstance.textcolor, for: .normal)
+        freamsizeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
         
         
     }
@@ -109,6 +136,9 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBAction func framesize(_ sender: Any) {
         filtertype = "size"
         self.filtercollection.reloadData()
+        brandOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+        shapeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolorblack, for: .normal)
+        freamsizeOutlet.setTitleColor(LookrConstants.sharedInstance.textcolor, for: .normal)
         
     }
     

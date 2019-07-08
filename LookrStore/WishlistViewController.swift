@@ -27,6 +27,7 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     @IBOutlet weak var imageCirleView: UIView!
     @IBOutlet weak var wishlistcountOutlet: UILabel!
     @IBOutlet var addiconOutlet: UIButton!
+    @IBOutlet weak var filterOutlet: RoundedCornerView!
     
     
     var dittoid = "" ,token = "" , mnumber = "", filterglassstring="Sunglasses" ,sku = ""
@@ -69,7 +70,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         viewOutlet.layer.backgroundColor = LookrConstants.sharedInstance.bgcolor.cgColor
 
         //self.wishlistview.scrollEnabled = ; // Disable automated scrolling
-
         
         gotocomparisonAPI()
         
@@ -363,7 +363,6 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         
         collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: true)
 
-        
         let imagePath = ((subFreamsArray[indexPath.row] as AnyObject).value(forKey: "image") as! String)
         
         let url = URL(string: imagePath)

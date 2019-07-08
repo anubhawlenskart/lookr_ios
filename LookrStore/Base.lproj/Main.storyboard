@@ -50,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f3P-bd-ANu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1107.8125" y="43.9453125"/>
+            <point key="canvasLocation" x="-1109" y="44"/>
         </scene>
         <!--User Freame View Controller-->
         <scene sceneID="N2R-lZ-5EZ">
@@ -270,6 +270,7 @@
                         <outlet property="addiconOutlet" destination="RRD-eB-Pbx" id="tai-ry-Djf"/>
                         <outlet property="brandname" destination="2au-Oy-ScP" id="gfj-hX-iOD"/>
                         <outlet property="eyeglasses" destination="2y2-Nv-S3t" id="u6q-kF-Cs2"/>
+                        <outlet property="filterOutlet" destination="BgB-s9-Mwc" id="vbq-PA-oVN"/>
                         <outlet property="fullimage" destination="CLm-iQ-56y" id="CDt-HT-EE7"/>
                         <outlet property="imageCirleView" destination="Ovh-ut-I0X" id="EY3-dh-rHI"/>
                         <outlet property="liftbutton" destination="pOm-7K-0mw" id="VJB-fQ-LpB"/>
@@ -283,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yzw-96-pFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-371.875" y="43.9453125"/>
+            <point key="canvasLocation" x="-373" y="44"/>
         </scene>
         <!--Chnage Ditto View Controller-->
         <scene sceneID="ocK-xn-8bM">
@@ -364,7 +365,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dtp-ht-RU9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-372" y="711"/>
+            <point key="canvasLocation" x="-373" y="708"/>
         </scene>
         <!--Share Collection View Controller-->
         <scene sceneID="WpO-tg-4sj">
@@ -472,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxn-I1-xYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-359" y="-662"/>
+            <point key="canvasLocation" x="-373" y="-662"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="fPZ-CJ-01O">
@@ -580,7 +581,7 @@
                                             <color key="titleColor" red="0.01176470588" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="framesize:" destination="8nK-Kr-ibq" eventType="touchUpInside" id="Wr4-xd-iFf"/>
+                                            <action selector="brand:" destination="8nK-Kr-ibq" eventType="touchUpInside" id="gz7-NA-BZN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qN-PG-TIs">
@@ -590,7 +591,7 @@
                                             <color key="titleColor" red="0.01176470588" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="brand:" destination="8nK-Kr-ibq" eventType="touchUpInside" id="sCc-He-jAV"/>
+                                            <action selector="framesize:" destination="8nK-Kr-ibq" eventType="touchUpInside" id="eGU-k3-gLs"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -602,12 +603,15 @@
                         <viewLayoutGuide key="safeArea" id="D44-no-3GS"/>
                     </view>
                     <connections>
+                        <outlet property="brandOutlet" destination="CHz-nP-gMR" id="yXb-un-jwi"/>
                         <outlet property="filtercollection" destination="T05-W3-Dkq" id="N17-WF-xxQ"/>
+                        <outlet property="freamsizeOutlet" destination="4qN-PG-TIs" id="lfM-Cz-GWj"/>
+                        <outlet property="shapeOutlet" destination="33v-ne-JXZ" id="nEc-Q3-csB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9hI-lQ-xmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1108" y="-662"/>
+            <point key="canvasLocation" x="-1109.375" y="-662.109375"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="B0V-rs-oYs">
@@ -626,7 +630,7 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baseline_share_white_48pt" translatesAutoresizingMaskIntoConstraints="NO" id="DKB-qa-m01">
                                 <rect key="frame" x="630" y="61" width="91" height="65"/>
-                                <color key="backgroundColor" red="0.011764705882352941" green="0.074509803921568626" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.01176470588" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="91" id="LIX-eN-pd0"/>
@@ -643,7 +647,8 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Zz-nN-QVy">
                                 <rect key="frame" x="0.0" y="174" width="768" height="696"/>
-                                <color key="backgroundColor" red="0.012723266150000001" green="0.072851993140000001" blue="0.080055736010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.01176470588" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="696" id="UO9-mD-pAD"/>
                                 </constraints>
@@ -715,6 +720,8 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.01176470588" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="vtI-we-HRD" firstAttribute="centerX" secondItem="j5a-zq-Hmb" secondAttribute="centerX" id="3OV-jh-EYH"/>
                                             <constraint firstItem="jLV-hd-px6" firstAttribute="top" secondItem="kaZ-ch-aMy" secondAttribute="top" id="8Na-2B-aEs"/>
@@ -739,6 +746,7 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.01176470588" green="0.074509803920000006" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Y6K-oe-Nav" firstAttribute="top" secondItem="HYo-Nf-Tga" secondAttribute="top" constant="41" id="DtA-6n-l2p"/>
                             <constraint firstItem="Y6K-oe-Nav" firstAttribute="bottom" secondItem="ykD-dY-gvO" secondAttribute="bottom" id="KUa-lw-0sU"/>
@@ -765,7 +773,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjf-Tt-s43" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="360.15625" y="35.7421875"/>
+            <point key="canvasLocation" x="362" y="44"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sLX-iZ-DPB">

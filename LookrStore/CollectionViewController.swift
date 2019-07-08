@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CollectionViewController: BaseViewController ,
 UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, CollectionimageViewCellDelegate {
     
@@ -32,7 +33,8 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         collectionview.dataSource = self
         collectionview.delegate = self
         
-        viewOutlet.layer.backgroundColor = LookrConstants.sharedInstance.bgcolor.cgColor
+
+       // viewOutlet.layer.backgroundColor = LookrConstants.sharedInstance.bgcolor.cgColor
 
         
         let defaults = UserDefaults.standard
