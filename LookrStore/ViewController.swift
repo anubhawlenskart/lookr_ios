@@ -141,6 +141,34 @@ class ViewController: UIViewController , UITextFieldDelegate, WishListController
         }
     }
     
+    
+    func countryCodeOtp(){
+        if let numebr = mobileNumber.text {
+            if let intnumebr = Int(numebr){
+                let urlstring = "\(LookrConstants.sharedInstance.baseURL)getcountrycodes"
+                let params = ["":""] as Dictionary<String, String>
+                var request = URLRequest(url: URL(string: urlstring)!)
+                request.httpMethod = "POST"
+                request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.addValue("application/json", forHTTPHeaderField: "Accept")
+                let session = URLSession.shared
+                let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
+                    DispatchQueue.main.async {
+                        do {
+                            let str = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
+                            
+                        } catch {
+                            print("error")
+                        }
+                        
+                    }
+                })
+                task.resume()
+            }
+        }
+    }
+    
     @IBAction func getStarted(_ sender: Any) {
         if mobileNumber.text == "" {
             let alert = UIAlertController(title: "Error", message: "Enter Mobile Number", preferredStyle: UIAlertController.Style.alert)
