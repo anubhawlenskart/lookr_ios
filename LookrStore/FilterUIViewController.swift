@@ -11,6 +11,7 @@ import UIKit
 class FilterUIViewController: UICollectionViewCell {
     
    
+    @IBOutlet weak var viewOutlet: UIView!
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var imageframe: UIImageView!
@@ -27,6 +28,7 @@ class FilterUIViewController: UICollectionViewCell {
     }
     
 
+    
 
     /*
     // MARK: - Navigation

@@ -25,6 +25,10 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
     var filtershapeviewArray = NSArray()
     var filtersizeviewArray = NSArray()
     var dittoid = "" ,token = "" , mnumber = "" , filtertype = "shape"
+    var indexPathmain = 0
+
+    var filterString = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -328,6 +332,24 @@ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlow
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        indexPathmain = indexPath.row
+
+        let string = "\(filterString)"
+        let name = ((filterbrandviewArray[indexPath.row] as AnyObject) as! String)
+
+        filterString.forEach { (product) in
+            let nameString = String(name)
+            if let existingSKU = product as? String {
+                if existingSKU != nameString {
+                    self.filterString.append("\(existingSKU),")
+
+                }
+            }
+        }
     }
     
 }
