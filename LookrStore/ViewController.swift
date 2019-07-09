@@ -10,23 +10,28 @@ import UIKit
 import Foundation
 
 
-class ViewController: UIViewController , UITextFieldDelegate, WishListControllerDelegate {
+class ViewController: UIViewController , UITextFieldDelegate, WishListControllerDelegate, UITextViewDelegate {
+    
 
     @IBOutlet weak var maleButton: RoundedCornerView!
     @IBOutlet weak var femaleButton: UIButton!
     @IBOutlet weak var mobileNumber: UITextField!
     @IBOutlet weak var image: UIImageView!
-
+    @IBOutlet weak var countryCodeTextView: UITextView!
+    
+    @IBOutlet weak var centerAlingnment: NSLayoutConstraint!
     var dittoid = "" ,token = ""
     var counter = 1
     var isAnimating = false
     var timer = Timer()
+    let countryCodeList = ["+20"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         mobileNumber.becomeFirstResponder()
         mobileNumber.delegate = self
         mobileNumber.keyboardType = .decimalPad
+        countryCodeTextView.delegate = self
 
         if isAnimating {
             timer.invalidate()
@@ -41,6 +46,17 @@ class ViewController: UIViewController , UITextFieldDelegate, WishListController
         }
         mobileNumber.setLeftPaddingPoints(100)
 
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+        return updatedText.count <= 3
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        centerAlingnment.constant = -3
     }
 
     
